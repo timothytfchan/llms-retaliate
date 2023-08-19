@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from ..utils.helper_functions import chat_completion_with_retries
+from ..utils.helper_functions import chat_completion_with_retries, save_labels, get_last_processed_row
 
 def get_completions_decision(MODEL = 'gpt-4-0314',
                              PROMPTS_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'datasets', 'processed', 'generated_prompts.csv'),
@@ -21,24 +21,11 @@ def get_completions_decision(MODEL = 'gpt-4-0314',
         return
     filtered_prompts = prompts[prompts['question_key'] == FILTER]
     sorted_prompts = filtered_prompts.sort_values(by=['scenario_id', 'context_key'])
-
-    def save_labels(rows):
-        df = pd.DataFrame(rows, columns=['scenario_id', 'context_key'] + sample_columns)
-        df.to_csv(COMPLETIONS_PATH, mode='a', header=False, index=False)
-
-    def get_last_processed_row():
-        try:
-            df = pd.read_csv(COMPLETIONS_PATH)
-            return len(df)
-        except FileNotFoundError:
-            with open(COMPLETIONS_PATH, 'w') as f:
-                f.write(f"scenario_id,context_key,{','.join(sample_columns)}\n")
-            return 0
     
     # Get and save completions by creating a one row dataframe and appending it to the csv file.
     # For loop over the sorted_prompts dataframe. Then, inside the loop, for each prompt, get NUM_SAMPLES completions.
     # Save the completions by appending to the csv file.
-    last_processed_row = get_last_processed_row()
+    last_processed_row = get_last_processed_row(COMPLETIONS_PATH, f"scenario_id,context_key,{','.join(sample_columns)}\n")
     for i, row in sorted_prompts.iloc[last_processed_row:].iterrows(): # For each prompt
         scenario_id, context_key, PROMPT = row['scenario_id'], row['context_key'], row['prompt']
         new_row = [scenario_id, context_key]
@@ -47,7 +34,7 @@ def get_completions_decision(MODEL = 'gpt-4-0314',
             res = chat_completion_with_retries(model=MODEL, messages=messages, temperature=TEMPERATURE, max_tokens=1)
             response_text = res["choices"][0]["message"]["content"] if res else ""
             new_row.append(response_text)
-        save_labels(new_row)
+        save_labels(COMPLETIONS_PATH, rows=[new_row], columns=['scenario_id', 'context_key'] + sample_columns, mode='a', header=False)
     
     print(f"Finished running file {os.path.dirname(__file__)} for {MODEL}.")
 

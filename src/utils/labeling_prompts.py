@@ -1,6 +1,6 @@
 # If needed, add more labeling prompts here.
 
-def filter_to_labeling_prompt(FILTER):
+def labeling_prompts(LABELING_PROMPT_FILTER):
     filter_to_labeling = dict()
 
     filter_to_labeling['benefits_desc'] = """
@@ -593,4 +593,4 @@ JSON C:
 ---
 """
 
-    return filter_to_labeling[FILTER]
+    return filter_to_labeling[LABELING_PROMPT_FILTER]

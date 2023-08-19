@@ -4,19 +4,26 @@ import json
 import string
 import time
 from typing import List
-from ..utils.labeling_prompts import filter_to_labeling_prompt
-from ..utils.helper_functions import chat_completion_with_retries
+from ..utils.labeling_prompts import labeling_prompts
+from ..utils.helper_functions import chat_completion_with_retries, save_labels, get_last_processed_row
 
-def label_completions(MODEL = 'gpt-4-0314', BATCH_SIZE = 10,
+def label_completions(COMPLETIONS_PATH,
+                      MODEL = 'gpt-4-0314', BATCH_SIZE = 10,
                       PROMPTS_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'datasets', 'processed', 'generated_prompts.csv'),
-                      FILTER = "benefits_desc",
-                      COMPLETIONS_PATH = None,
+                      LABELING_PROMPT_FILTER = "benefits_desc",
                       LABELS_PATH = None
                       ):
-    if not LABELS_PATH:
-        LABELS_PATH = COMPLETIONS_PATH.replace('completions', 'labels')
+    try:
+        if not LABELS_PATH:
+            dir_path, filename = os.path.split(COMPLETIONS_PATH) # Split off the filename
+            parent_dir, tail = os.path.split(dir_path) # Split the directory path to get the parent directory and the 'completions' part
+            tail = 'labels'  # Replace 'completions' with 'labels'
+            LABELS_PATH = os.path.join(parent_dir, tail, filename) # Join everything back together
+    except:
+        print("Error: Invalid COMPLETIONS_PATH path.")
+        return
     
-    # Read files into dataframes
+    # Read the prompts (questions) and completions (answers) CSV files
     try:
         prompts = pd.read_csv(PROMPTS_PATH)
     except FileNotFoundError:
@@ -29,27 +36,20 @@ def label_completions(MODEL = 'gpt-4-0314', BATCH_SIZE = 10,
         print(f"Error: {COMPLETIONS_PATH} not found.")
         return
 
+    # Retrieve questions with the LABELING_PROMPT_FILTER
+    try:
+        prompts = prompts[prompts['question_key'] == LABELING_PROMPT_FILTER]
+    except:
+        print(f"Error: Could not filter prompts by {LABELING_PROMPT_FILTER}.")
+        return
+
     # Merge both files on scenario_id, context_key, and question_key
     try:
-        merged_data = pd.merge(prompts, completions, on=['scenario_id', 'context_key', 'question_key'])
+        merged_data = pd.merge(prompts, completions, on=['scenario_id', 'context_key'])
     except:
         print("Error: Could not merge prompts and completions.")
         return
-    filtered_data = merged_data[merged_data['question_key'] == FILTER]
-    sorted_data = filtered_data.sort_values(by=['scenario_id', 'context_key'])
-
-    def save_labels(rows):
-        df = pd.DataFrame(rows, columns=['scenario_id', 'context_key', 'labels'])
-        df.to_csv(LABELS_PATH, mode='a', header=False, index=False)
-
-    def get_last_processed_row():
-        try:
-            df = pd.read_csv(LABELS_PATH)
-            return len(df)
-        except FileNotFoundError: # Create CSV file if it doesn't exist
-            with open(LABELS_PATH, 'w') as f:
-                f.write("scenario_id,context_key,labels\n")
-            return 0
+    sorted_data = merged_data.sort_values(by=['scenario_id', 'context_key'])
 
     # Parse the response text to get the JSON outputs
     def parse_json_output(response_text, remaining_alphabet):
@@ -68,7 +68,7 @@ def label_completions(MODEL = 'gpt-4-0314', BATCH_SIZE = 10,
         return json_labels
 
     # Get the last processed row number from the results CSV and determine the rows to process based on it
-    start_row = get_last_processed_row()
+    start_row = get_last_processed_row(path=LABELS_PATH, default_header="scenario_id,context_key,labels\n")
     print(f"Starting from row {start_row}")
     to_process = sorted_data[start_row:]
 
@@ -88,7 +88,7 @@ def label_completions(MODEL = 'gpt-4-0314', BATCH_SIZE = 10,
         num_fewshot = 3
         remaining_alphabet = string.ascii_uppercase[num_fewshot:]
         samples_text = "\n---\n".join([f"SAMPLE {alpha}:\n{sample}" for alpha, sample in zip(remaining_alphabet, samples)])
-        messages = [{"role": "user", "content": filter_to_labeling_prompt[FILTER].format(samples_text)}]
+        messages = [{"role": "user", "content": labeling_prompts[LABELING_PROMPT_FILTER].format(samples_text)}]
 
         tstart = time.time()
         res = chat_completion_with_retries(model=MODEL, messages=messages)
@@ -97,7 +97,7 @@ def label_completions(MODEL = 'gpt-4-0314', BATCH_SIZE = 10,
         response_text = res["choices"][0]["message"]["content"] if res else ""
         json_labels = parse_json_output(response_text, remaining_alphabet)
 
-        rows = zip(scenario_id_list, context_keys_list, json_labels)
-        save_labels(rows)
+        rows = list(zip(scenario_id_list, context_keys_list, json_labels))
+        save_labels(path=LABELS_PATH, rows=rows, columns=['scenario_id', 'context_key', 'labels'], mode='a', header=False)
 
     return LABELS_PATH

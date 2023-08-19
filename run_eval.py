@@ -79,39 +79,39 @@ for MODEL in ['gpt-3.5-turbo-0301']: #, 'gpt-4-0314'
 
     # Label completions
     # Descriptive
-    LABELS_PATH_BENEFITS_DESC = label_completions(MODEL = EVAL_MODEL, BATCH_SIZE = 10,
-                                             PROMPTS_PATH = PROMPTS_PATH,
-                                             FILTER = "benefits_desc",
-                                             COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC,
-                                             LABELS_PATH = None)
+    LABELS_PATH_BENEFITS_DESC = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC,
+                                                  MODEL = EVAL_MODEL, BATCH_SIZE = 10,
+                                                  PROMPTS_PATH = PROMPTS_PATH,
+                                                  LABELING_PROMPT_FILTER = "benefits_desc",
+                                                  LABELS_PATH = None)
     #os.path.join(os.path.dirname(__file__), '..', '..', 'completions', f'benefits_desc_follow_up_{MODEL}.csv')
-    LABELS_PATH_FOLLOW_UP_DESC = label_completions(MODEL = EVAL_MODEL, BATCH_SIZE = 10,
+    LABELS_PATH_FOLLOW_UP_DESC = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC,
+                                                   MODEL = EVAL_MODEL, BATCH_SIZE = 10,
                                                    PROMPTS_PATH = PROMPTS_PATH,
-                                                   FILTER = "benefits_desc",
-                                                   COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC,
+                                                   LABELING_PROMPT_FILTER = "methods_desc",
                                                    LABELS_PATH = None)
     
-    LABELS_PATH_METHODS_DESC = label_completions(MODEL = EVAL_MODEL, BATCH_SIZE = 10,
+    LABELS_PATH_METHODS_DESC = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC,
+                                                 MODEL = EVAL_MODEL, BATCH_SIZE = 10,
                                                  PROMPTS_PATH = PROMPTS_PATH,
-                                                 FILTER = "methods_desc",
-                                                 COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC,
+                                                 LABELING_PROMPT_FILTER = "methods_desc",
                                                  LABELS_PATH = None)
 
     # Prescriptive
-    LABELS_PATH_BENEFITS_PRES = label_completions(MODEL = EVAL_MODEL, BATCH_SIZE = 10,
-                                             PROMPTS_PATH = PROMPTS_PATH,
-                                             FILTER = "benefits_pres",
-                                             COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES,
-                                             LABELS_PATH = None)
+    LABELS_PATH_BENEFITS_PRES = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES,
+                                                  MODEL = EVAL_MODEL, BATCH_SIZE = 10,
+                                                  PROMPTS_PATH = PROMPTS_PATH,
+                                                  LABELING_PROMPT_FILTER = "benefits_desc",
+                                                  LABELS_PATH = None)
     #os.path.join(os.path.dirname(__file__), '..', '..', 'completions', f'benefits_pres_follow_up_{MODEL}.csv')
-    LABELS_PATH_FOLLOW_UP_PRES = label_completions(MODEL = EVAL_MODEL, BATCH_SIZE = 10,
+    LABELS_PATH_FOLLOW_UP_PRES = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES,
+                                                   MODEL = EVAL_MODEL, BATCH_SIZE = 10,
                                                    PROMPTS_PATH = PROMPTS_PATH,
-                                                   FILTER = "benefits_pres",
-                                                   COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES,
+                                                   LABELING_PROMPT_FILTER = "methods_pres",
                                                    LABELS_PATH = None)
     
-    LABELS_PATH_METHODS_PRES = label_completions(MODEL = EVAL_MODEL, BATCH_SIZE = 10,
+    LABELS_PATH_METHODS_PRES = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES,
+                                                 MODEL = EVAL_MODEL, BATCH_SIZE = 10,
                                                  PROMPTS_PATH = PROMPTS_PATH,
-                                                 FILTER = "methods_pres",
-                                                 COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES,
+                                                 LABELING_PROMPT_FILTER = "methods_pres",
                                                  LABELS_PATH = None)

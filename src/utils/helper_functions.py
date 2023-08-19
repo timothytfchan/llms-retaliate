@@ -3,6 +3,7 @@ import os
 import time
 import openai
 from dotenv import load_dotenv
+import pandas as pd
 from typing import Dict, List, Mapping, Optional
 
 # Set OpenAI API key
@@ -37,3 +38,17 @@ def chat_completion_with_retries(model: str, messages: List, max_retries: int = 
             print(f"Hit openai.error exception. Waiting {retry_interval_sec} seconds for retry... ({n_attempts_remaining - 1} attempts remaining)", flush=True)
             time.sleep(retry_interval_sec)
     return {}
+
+def save_labels(path, rows, columns=None, mode='a', header=False):
+    df = pd.DataFrame(rows, columns=columns)
+    df.to_csv(path, mode=mode, header=header, index=False)
+    
+def get_last_processed_row(path, default_header=None):
+    try:
+        df = pd.read_csv(path)
+        return len(df)
+    except FileNotFoundError:
+        if default_header:
+            with open(path, 'w') as f:
+                f.write(default_header + "\n")
+        return 0
