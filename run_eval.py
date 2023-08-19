@@ -60,20 +60,20 @@ for MODEL in ['gpt-3.5-turbo-0301']: #, 'gpt-4-0314'
 
     COMPLETIONS_PATH_BENEFITS_PRES = get_completions(MODEL = MODEL,
                                                      TEMPERATURE = TEMPERATURE,
-                                                     FILTER = 'benefits_desc',
+                                                     FILTER = 'benefits_pres',
                                                      PROMPTS_PATH = PROMPTS_PATH,
                                                      COMPLETIONS_PATH = None)
 
     COMPLETIONS_PATH_FOLLOW_UP_PRES = get_completions_follow_up(MODEL = MODEL,
                                                                 TEMPERATURE = TEMPERATURE,
-                                                                FILTER = 'benefits_desc',
+                                                                FILTER = 'benefits_pres',
                                                                 PROMPTS_PATH = PROMPTS_PATH,
                                                                 PREV_MESSAGE_PATH = COMPLETIONS_PATH_BENEFITS_PRES,
                                                                 COMPLETIONS_PATH = None)
     
     COMPLETIONS_PATH_METHODS_PRES = get_completions(MODEL = MODEL,
                                                     TEMPERATURE = TEMPERATURE,
-                                                    FILTER = 'methods_desc',
+                                                    FILTER = 'methods_pres',
                                                     PROMPTS_PATH = PROMPTS_PATH,
                                                     COMPLETIONS_PATH = None)
 
@@ -101,7 +101,7 @@ for MODEL in ['gpt-3.5-turbo-0301']: #, 'gpt-4-0314'
     LABELS_PATH_BENEFITS_PRES = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES,
                                                   MODEL = EVAL_MODEL, BATCH_SIZE = 10,
                                                   PROMPTS_PATH = PROMPTS_PATH,
-                                                  LABELING_PROMPT_FILTER = "benefits_desc",
+                                                  LABELING_PROMPT_FILTER = "benefits_pres",
                                                   LABELS_PATH = None)
     #os.path.join(os.path.dirname(__file__), '..', '..', 'completions', f'benefits_pres_follow_up_{MODEL}.csv')
     LABELS_PATH_FOLLOW_UP_PRES = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES,

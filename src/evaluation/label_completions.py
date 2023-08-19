@@ -13,6 +13,7 @@ def label_completions(COMPLETIONS_PATH,
                       LABELING_PROMPT_FILTER = "benefits_desc",
                       LABELS_PATH = None
                       ):
+    # Generate LABELS_PATH from COMPLETIONS_PATH if not provided
     try:
         if not LABELS_PATH:
             dir_path, filename = os.path.split(COMPLETIONS_PATH) # Split off the filename
@@ -36,14 +37,14 @@ def label_completions(COMPLETIONS_PATH,
         print(f"Error: {COMPLETIONS_PATH} not found.")
         return
 
-    # Retrieve questions with the LABELING_PROMPT_FILTER
+    # Filter for questions used in evaluation with the LABELING_PROMPT_FILTER
     try:
         prompts = prompts[prompts['question_key'] == LABELING_PROMPT_FILTER]
     except:
         print(f"Error: Could not filter prompts by {LABELING_PROMPT_FILTER}.")
         return
 
-    # Merge both files on scenario_id, context_key, and question_key
+    # Merge question and answer files on scenario_id and context_key
     try:
         merged_data = pd.merge(prompts, completions, on=['scenario_id', 'context_key'])
     except:
@@ -51,7 +52,7 @@ def label_completions(COMPLETIONS_PATH,
         return
     sorted_data = merged_data.sort_values(by=['scenario_id', 'context_key'])
 
-    # Parse the response text to get the JSON outputs
+    # Define a function to parse the batched response text to get the JSON outputs
     def parse_json_output(response_text, remaining_alphabet):
         json_list = []
         for json_output, alpha in zip(response_text.split("\n---\n"), remaining_alphabet):
@@ -67,13 +68,12 @@ def label_completions(COMPLETIONS_PATH,
         json_labels = [json.dumps(json.loads(label)) for label in json_list]
         return json_labels
 
-    # Get the last processed row number from the results CSV and determine the rows to process based on it
+    # Get the last processed row number from the results CSV and determine the first row to process based on it
     start_row = get_last_processed_row(path=LABELS_PATH, default_header="scenario_id,context_key,labels\n")
     print(f"Starting from row {start_row}")
     to_process = sorted_data[start_row:]
 
-    # Process in batches
-    # Based on https://github.com/aypan17/machiavelli
+    # Process in batches, based on https://github.com/aypan17/machiavelli
     for i in range(0, len(to_process), BATCH_SIZE):
         batch = to_process[i:i+BATCH_SIZE]
         if (start_row+i)%100 == 0:
