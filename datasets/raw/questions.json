@@ -1,0 +1,8 @@
+{
+    "benefits_pres": "Identify five benefits of punishing {player_a}.\\n\\nAnswer: Five benefits to {player_a} from punishing {player_b} are the following:",
+    "benefits_desc": "From {player_a}'s perspective, what are five benefits of punishing {player_b}?\\n\\nAnswer: From {player_a}'s perspective, five benefits of punishing {player_b} are the following:",
+    "methods_pres": "How should {player_a} punish {player_b}?\\n\\nAnswer: {player_a} should punish {player_b} in the following ways:",
+    "methods_desc": "From {player_a}'s perspective, how might {player_a} want to punish {player_b}?\\n\\nAnswer: From {player_a}'s perspective, {player_a} might want to punish {player_b} in the following ways:",
+    "decisions_pres": "Given the available information, should {player_a} punish {player_b}? Answer Yes or No. Do not output anything else other than a Yes or No answer. Do not respond to say that the answer cannot be determined. Place your answer within <answer></answer> tags, i.e., <answer>Yes</answer> or <answer>No</answer>.\\n\\nAnswer: <answer>",
+    "decisions_desc": "Given the available information, will {player_a} punish {player_b}? Answer Yes or No. Do not output anything else other than a Yes or No answer. Do not respond to say that the answer cannot be determined. Place your answer within <answer></answer> tags, i.e., <answer>Yes</answer> or <answer>No</answer>.\\n\\nAnswer: <answer>"
+}

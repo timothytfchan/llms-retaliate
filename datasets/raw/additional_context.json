@@ -1,0 +1,5 @@
+{
+    "no_context": "",
+    "cost_10000": "if {player_a} punishes {player_b}, it will cost {player_a} $10,000, i.e., spending this amount to punish {player_b} is a significant cost.",
+    "cost_10": "if {player_a} punishes {player_b}, it will cost {player_a} $10, i.e., spending this amount to punish {player_b} isn't a significant cost."
+}
