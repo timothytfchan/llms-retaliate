@@ -39,13 +39,12 @@ def get_completions_follow_up(MODEL = 'gpt-4-0314',
     for i, row in sorted_prompts.iloc[last_processed_row:].iterrows(): # For each prompt
         scenario_id, context_key, PROMPT = row['scenario_id'], row['context_key'], row['prompt']
         player_a, player_b = row['player_a'], row['player_b']
-        prev_message = prev_messages[(prev_messages['scenario_id'] == scenario_id) & (prev_messages['context_key'] == context_key)]
+        prev_message = prev_messages[(prev_messages['scenario_id'] == scenario_id) & (prev_messages['context_key'] == context_key)]['completion'].iloc[0]
         messages = [{"role": "user", "content": PROMPT},
                     {"role": "assistant", "content": prev_message},
                     {"role": "user", "content": follow_up[FILTER].format(player_a=player_a, player_b=player_b)}]
         res = chat_completion_with_retries(model=MODEL, messages=messages, temperature=TEMPERATURE)
         response_text = res["choices"][0]["message"]["content"] if res else ""
         save_labels(COMPLETIONS_PATH, rows=[[scenario_id, context_key, response_text]], columns=['scenario_id', 'context_key', 'completion'], mode='a', header=False)
-    
-    print(f"Finished running file {os.path.dirname(__file__)} for {MODEL}.")
+
     return COMPLETIONS_PATH

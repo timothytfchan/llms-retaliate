@@ -36,6 +36,4 @@ def get_completions_decision(MODEL = 'gpt-4-0314',
             new_row.append(response_text)
         save_labels(COMPLETIONS_PATH, rows=[new_row], columns=['scenario_id', 'context_key'] + sample_columns, mode='a', header=False)
     
-    print(f"Finished running file {os.path.dirname(__file__)} for {MODEL}.")
-
     return COMPLETIONS_PATH

@@ -30,5 +30,4 @@ def get_completions(MODEL = 'gpt-4-0314',
         response_text = res["choices"][0]["message"]["content"] if res else ""
         save_labels(COMPLETIONS_PATH, rows=[[scenario_id, context_key, response_text]], columns=['scenario_id', 'context_key', 'completion'], mode='a', header=False)
     
-    print(f"Finished running file {os.path.dirname(__file__)} for {MODEL}.")
     return COMPLETIONS_PATH

@@ -52,21 +52,27 @@ def label_completions(COMPLETIONS_PATH,
         return
     sorted_data = merged_data.sort_values(by=['scenario_id', 'context_key'])
 
-    # Define a function to parse the batched response text to get the JSON outputs
+    # Define a function to parse the batched response text to get the JSON outputs    
     def parse_json_output(response_text, remaining_alphabet):
         json_list = []
+        
         for json_output, alpha in zip(response_text.split("\n---\n"), remaining_alphabet):
-            if not json_output.startswith(f"JSON {alpha}:"): # Validate the JSON object
-                break
-            try:
-                json_individual_output = json_output[len(f"JSON {alpha}:"):].strip()
-            except (json.JSONDecodeError, KeyError, ValueError, TypeError) as e:
-                print(e)
-                print("Error parsing JSON output:", json_output)
-                json_individual_output = "{}"
-            json_list.append(json_individual_output)
-        json_labels = [json.dumps(json.loads(label)) for label in json_list]
-        return json_labels
+            if not json_output.startswith(f"JSON {alpha}:"):
+                json_list.append("{}")
+            else:
+                try:
+                    json_individual_output = json_output[len(f"JSON {alpha}:"):].strip()
+                    # Ensure that the extracted segment is a valid JSON
+                    valid_json = json.loads(json_individual_output)
+                    json_list.append(json.dumps(valid_json))
+                except json.JSONDecodeError:
+                    print(f"Error parsing JSON output: {json_individual_output}")
+                    json_list.append("{}")
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    json_list.append("{}")
+                    
+        return json_list
 
     # Get the last processed row number from the results CSV and determine the first row to process based on it
     start_row = get_last_processed_row(path=LABELS_PATH, default_header="scenario_id,context_key,labels\n")
@@ -76,7 +82,7 @@ def label_completions(COMPLETIONS_PATH,
     # Process in batches, based on https://github.com/aypan17/machiavelli
     for i in range(0, len(to_process), BATCH_SIZE):
         batch = to_process[i:i+BATCH_SIZE]
-        if (start_row+i)%100 == 0:
+        if (start_row+i)%300 == 0:
             print(f"Processing batch beginning row no. {start_row+i}")
         
         scenario_id_list = batch['scenario_id'].tolist()
@@ -88,10 +94,10 @@ def label_completions(COMPLETIONS_PATH,
         num_fewshot = 3
         remaining_alphabet = string.ascii_uppercase[num_fewshot:]
         samples_text = "\n---\n".join([f"SAMPLE {alpha}:\n{sample}" for alpha, sample in zip(remaining_alphabet, samples)])
-        messages = [{"role": "user", "content": labeling_prompts[LABELING_PROMPT_FILTER].format(samples_text)}]
+        messages = [{"role": "user", "content": labeling_prompts(LABELING_PROMPT_FILTER).format(samples_text=samples_text)}]
 
         tstart = time.time()
-        res = chat_completion_with_retries(model=MODEL, messages=messages)
+        res = chat_completion_with_retries(model=MODEL, messages=messages, temperature=0)
         print("Batch evaluation time taken:", time.time() - tstart, flush=True)
 
         response_text = res["choices"][0]["message"]["content"] if res else ""

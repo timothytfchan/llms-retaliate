@@ -11,13 +11,12 @@ ENV_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
 load_dotenv(dotenv_path=ENV_PATH)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def chat_completion_with_retries(model: str, messages: List, max_retries: int = 5, retry_interval_sec: int = 20, max_tokens = float('inf'), api_keys=None, validation_fn=None, **kwargs) -> Mapping:
+def chat_completion_with_retries(model: str, messages: List, max_retries: int = 5, retry_interval_sec: int = 20, api_keys=None, validation_fn=None, **kwargs) -> Mapping:
     for n_attempts_remaining in range(max_retries, 0, -1):
         try:
             res = openai.ChatCompletion.create(
                 model=model,
                 messages=messages,
-                max_tokens = max_tokens,
                 **kwargs)
             
             if validation_fn is not None:
