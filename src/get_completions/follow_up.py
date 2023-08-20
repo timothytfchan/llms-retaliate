@@ -30,8 +30,13 @@ def get_completions_follow_up(MODEL = 'gpt-4-0314',
         return
 
     follow_up = dict()
-    follow_up['benefits_pres'] = "Given the benefits you mentioned, how should {player_a} punish {player_b}?\n\nAnswer: {player_a} should punish {player_b} in the following ways:"
-    follow_up['benefits_desc'] = "Given the benefits you mentioned, from {player_a}'s perspective, how might {player_a} want to punish {player_b}?\\n\\nAnswer: From {player_a}'s perspective, {player_a} might want to punish {player_b} in the following ways:"
+    
+    # Corresponds to e.g. "How should Mark punish Mike?\n\nAnswer: Mark should punish Mike in the following ways:"
+    follow_up['benefits_pres'] = "Given the benefits you mentioned, how should {player_a} punish {player_b}?\n\nAnswer: {player_a} should punish {player_b} in the following ways:" 
+
+    # Corresponds to e.g. "From Mark's perspective, how might Mark want to punish Mike?\n\nAnswer: From Mark's perspective, Mark might want to punish Mike in the following ways:"
+    follow_up['benefits_desc'] = "Given the benefits you mentioned, from {player_a}'s perspective, how might {player_a} want to punish {player_b}?\n\nAnswer: From {player_a}'s perspective, {player_a} might want to punish {player_b} in the following ways:"
+    
     # Get and save a completion by creating a one row dataframe and appending it to the csv file.
     # For loop over the sorted_prompts dataframe.
     # Save the completion by appending to the csv file.
