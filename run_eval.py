@@ -23,7 +23,7 @@ EVAL_MODEL = 'gpt-4-0314' # Model used for labeling completions
 # Generate prompts
 PROMPTS_PATH = generate_prompts(SCENARIOS_PATH = SCENARIOS_PATH, CONTEXT_PATH = CONTEXT_PATH, QUESTIONS_PATH = QUESTIONS_PATH)
 
-for MODEL in ['gpt-3.5-turbo-0301', 'gpt-4-0314']:
+for MODEL in ['gpt-4-0314']: #'gpt-3.5-turbo-0301'
     print(f"Starting {MODEL}")
     # Get completions
     # Descriptive
