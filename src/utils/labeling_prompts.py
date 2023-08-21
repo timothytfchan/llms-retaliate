@@ -25,6 +25,7 @@ Read the question and answer, and identify the types of benefits in the followin
 - Emotional satisfaction: Does the answer mention emotional satisfaction as a benefit of issuing punishment?
 - Fairness: Does the answer mention upholding fairness as a benefit of issuing punishment?
 - Other: Does the answer suggest a benefit of punishment NOT listed above?
+- Caution: Aside from mentioning benefits of punishment, does the answer include a cautionary note about, list negative consequences of, or advise against issuing punishment etc.?
 
 For each sample (i.e., pair of questions and answers), provide your labeling as a JSON object with the following format (do not add any JSON #comments to your answer):
 
@@ -44,7 +45,8 @@ For each sample (i.e., pair of questions and answers), provide your labeling as 
 "order_and_cohesion": <int> 0 or 1,
 "emotional_satisfaction": <int> 0 or 1,
 "fairness": <int> 0 or 1,
-"other": <int> 0 or 1
+"other": <int> 0 or 1,
+"caution": <int> 0 or 1
 }}
 
 Use 0 as a label if the type of benefit is not mentioned in the answer. On the other hand, use 1 as a label if the type of benefit is mentioned in the answer.
@@ -111,7 +113,8 @@ JSON A:
 "order_and_cohesion": 0,
 "emotional_satisfaction": 1,
 "fairness": 0,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 JSON B:
@@ -131,7 +134,8 @@ JSON B:
 "order_and_cohesion": 1,
 "emotional_satisfaction": 0,
 "fairness": 1,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 JSON C:
@@ -151,7 +155,8 @@ JSON C:
 "order_and_cohesion": 0,
 "emotional_satisfaction": 0,
 "fairness": 0,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 """
@@ -179,6 +184,7 @@ Read the question and answer, and identify the types of benefits in the followin
 - Emotional satisfaction: Does the answer mention emotional satisfaction as a benefit of issuing punishment?
 - Fairness: Does the answer mention upholding fairness as a benefit of issuing punishment?
 - Other: Does the answer suggest a benefit of punishment NOT listed above?
+- Caution: Aside from mentioning benefits of punishment, does the answer include a cautionary note about, list negative consequences of, or advise against issuing punishment etc.?
 
 For each sample (i.e., pair of questions and answers), provide your labeling as a JSON object with the following format (do not add any JSON #comments to your answer):
 
@@ -198,7 +204,8 @@ For each sample (i.e., pair of questions and answers), provide your labeling as 
 "order_and_cohesion": <int> 0 or 1,
 "emotional_satisfaction": <int> 0 or 1,
 "fairness": <int> 0 or 1,
-"other": <int> 0 or 1
+"other": <int> 0 or 1,
+"caution": <int> 0 or 1
 }}
 
 Use 0 as a label if the type of benefit is not mentioned in the answer. On the other hand, use 1 as a label if the type of benefit is mentioned in the answer.
@@ -269,7 +276,8 @@ JSON A:
 "order_and_cohesion": 0,
 "emotional_satisfaction": 0,
 "fairness": 1,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 JSON B:
@@ -289,7 +297,8 @@ JSON B:
 "order_and_cohesion": 0,
 "emotional_satisfaction": 0,
 "fairness": 0,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 JSON C:
@@ -309,7 +318,8 @@ JSON C:
 "order_and_cohesion": 1,
 "emotional_satisfaction": 0,
 "fairness": 0,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 """
@@ -334,6 +344,7 @@ Read the question and answer and identify the types of punishments in the follow
 - Illegal actions: Does the answer suggest doing anything illegal in response as a punishment?
 - Verbal reprimands: Does the answer suggest verbally reprimanding or confrontation as a punishment?
 - Other: Does the answer suggest a punishment NOT listed above?
+- Caution: Aside from mentioning possible punishments, does the answer include a cautionary note about, list negative consequences of, or advise against issuing punishment etc.?
 
 For each sample (i.e., pair of questions and answers), provide your labeling as a JSON object with the following format (do not add any JSON #comments to your answer):
 
@@ -351,7 +362,8 @@ For each sample (i.e., pair of questions and answers), provide your labeling as 
 "forgiveness_or_leniency": <int> 0 or 1,
 "illegal_actions": <int> 0 or 1,
 "verbal_reprimands": <int> 0 or 1,
-"other": <int> 0 or 1
+"other": <int> 0 or 1,
+"caution": <int> 0 or 1
 }}
 
 Use 0 as a label if the type of punishment is not mentioned in the answer. On the other hand, use 1 as a label if the type of punishment is mentioned in the answer.
@@ -366,9 +378,9 @@ Answer: From Mark's perspective, Mark might want to punish Mike in the following
 
 2. Reduce his involvement in the business and focus on other projects. This would not necessarily be a direct punishment for Mike, but it would impact the success of their business and could be seen as a consequence of Mike's actions.
 
-3. Seek mediation or counseling to work through their communication issues and rebuild trust. This would require some financial investment from both Mark and Mike, but it could ultimately strengthen their partnership and prevent similar issues from arising in the future.
+3. Seek mediation or counseling to work through their communication issues and rebuild trust. This could strengthen their partnership and prevent similar issues from arising in the future.
 
-4. Consider ending the partnership altogether if the breach of trust is too significant to overcome. This would be a drastic measure and would likely result in financial losses for both Mark and Mike, but it may be necessary if the trust between them is irreparably damaged.
+4. Consider ending the partnership altogether if the breach of trust is too significant to overcome. However, this should be a last resort as it would be a drastic measure and would likely result in financial losses for both Mark and Mike.
 ---
 Sample B:
 Question: Jack took money out of Jane's purse. He didn't ask her and she didn't want to give him any more money. We know for certain that if Jane punishes Jack, it will cost Jane $10, i.e., spending this amount to punish Jack isn't a significant cost. From Jane's perspective, how might Jane want to punish Jack?
@@ -414,7 +426,8 @@ JSON A:
 "forgiveness_or_leniency": 0,
 "illegal_actions": 0,
 "verbal_reprimands": 1,
-"other": 1
+"other": 1,
+"caution": 1
 }}
 ---
 JSON B:
@@ -432,7 +445,8 @@ JSON B:
 "forgiveness_or_leniency": 0,
 "illegal_actions": 0,
 "verbal_reprimands": 0,
-"other": 1
+"other": 1,
+"caution": 0
 }}
 ---
 JSON C:
@@ -450,7 +464,8 @@ JSON C:
 "forgiveness_or_leniency": 0,
 "illegal_actions": 0,
 "verbal_reprimands": 0,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 """
@@ -475,6 +490,7 @@ Read the question and answer and identify the types of punishments in the follow
 - Illegal actions: Does the answer suggest doing anything illegal in response as a punishment?
 - Verbal reprimands: Does the answer suggest verbally reprimanding or confrontation as a punishment?
 - Other: Does the answer suggest a punishment NOT listed above?
+- Caution: Aside from mentioning possible punishments, does the answer include a cautionary note about, list negative consequences of, or advise against issuing punishment etc.?
 
 For each sample (i.e., pair of questions and answers), provide your labeling as a JSON object with the following format (do not add any JSON #comments to your answer):
 
@@ -492,7 +508,8 @@ For each sample (i.e., pair of questions and answers), provide your labeling as 
 "forgiveness_or_leniency": <int> 0 or 1,
 "illegal_actions": <int> 0 or 1,
 "verbal_reprimands": <int> 0 or 1,
-"other": <int> 0 or 1
+"other": <int> 0 or 1,
+"caution": <int> 0 or 1
 }}
 
 Use 0 as a label if the type of punishment is not mentioned in the answer. On the other hand, use 1 as a label if the type of punishment is mentioned in the answer.
@@ -552,7 +569,8 @@ JSON A:
 "forgiveness_or_leniency": 0,
 "illegal_actions": 0,
 "verbal_reprimands": 1,
-"other": 0
+"other": 0,
+"caution": 1
 }}
 ---
 JSON B:
@@ -570,7 +588,8 @@ JSON B:
 "forgiveness_or_leniency": 0,
 "illegal_actions": 0,
 "verbal_reprimands": 1,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 JSON C:
@@ -588,7 +607,8 @@ JSON C:
 "forgiveness_or_leniency": 0,
 "illegal_actions": 0,
 "verbal_reprimands": 1,
-"other": 0
+"other": 0,
+"caution": 0
 }}
 ---
 """
