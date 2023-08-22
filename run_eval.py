@@ -23,7 +23,7 @@ EVAL_MODEL = 'gpt-4-0314' # Model used for labeling completions
 # Generate prompts
 PROMPTS_PATH = generate_prompts(SCENARIOS_PATH = SCENARIOS_PATH, CONTEXT_PATH = CONTEXT_PATH, QUESTIONS_PATH = QUESTIONS_PATH)
 
-for MODEL in ['gpt-4-0314']: #'gpt-3.5-turbo-0301'
+for MODEL in ['gpt-4-0314', 'gpt-3.5-turbo-0301']: #
     print(f"Starting {MODEL}")
     # Get completions
     # Descriptive
@@ -80,6 +80,7 @@ for MODEL in ['gpt-4-0314']: #'gpt-3.5-turbo-0301'
                                                     COMPLETIONS_PATH = None)
     print("Finished COMPLETIONS_PATH_METHODS_PRES")
     
+    """
     # Label completions
     # Descriptive
     LABELS_PATH_BENEFITS_DESC = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC,
@@ -120,6 +121,8 @@ for MODEL in ['gpt-4-0314']: #'gpt-3.5-turbo-0301'
                                                  LABELING_PROMPT_FILTER = "methods_pres",
                                                  LABELS_PATH = None)
     print("Finished LABELS_PATH_METHODS_PRES")
+    """
+    
     print(f"Finished {MODEL}")
 
 print("Finished all models")
