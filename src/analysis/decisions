@@ -1,0 +1,74 @@
+import os
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the data
+data_path = os.path.join(os.path.dirname(__file__), '..', '..', 'completions', 'decisions_desc_gpt-4-0314.csv')
+data = pd.read_csv(data_path)
+
+# Clean and process the data
+data_cleaned = data[(data['Yes'] + data['No']) > 0]
+data_cleaned['probability'] = data_cleaned['Yes'] / (data_cleaned['Yes'] + data_cleaned['No'])
+
+# Function to compute confidence intervals
+def bootstrap_confidence_interval(data, function=np.mean, n_bootstrap=1000, alpha=0.05):
+    bootstrapped_samples = np.random.choice(data, size=(n_bootstrap, len(data)), replace=True)
+    bootstrapped_values = function(bootstrapped_samples, axis=1)
+    lower = np.percentile(bootstrapped_values, 100 * alpha / 2)
+    upper = np.percentile(bootstrapped_values, 100 * (1 - alpha / 2))
+    return lower, upper
+
+# Compute mean probabilities and confidence intervals
+grouped = data_cleaned.groupby(['context_key'])
+means = grouped['probability'].mean()
+lower_bounds, upper_bounds = zip(*grouped['probability'].apply(bootstrap_confidence_interval))
+plot_data = pd.DataFrame({
+    'context_key': means.index,
+    'probability': means.values,
+    'lower_ci': lower_bounds,
+    'upper_ci': upper_bounds
+})
+
+# Define groupings
+groupings = {
+    "Cost-related": ['cost_10', 'cost_10000'],
+    "Deterrence-related": ['deter_impossible', 'deter_possible', 'deter_others_impossible', 'deter_others_possible'],
+    "Interaction-related": ['interaction_continuous', 'interaction_not_continuous'],
+    "Legal implications": ['legal_implications', 'legal_implications_none'],
+    "Offense recurrence": ['offense_will_not_recur', 'offense_will_recur', 'offense_will_recur_despite_punishment'],
+    "Others' stance": ['others_ambivalent', 'others_do_not_want_punishment', 'others_want_punishment', 'others_will_not_punish', 'others_will_punish'],
+    "Reputation": ['reputation_decrease', 'reputation_improve', 'reputation_same'],
+    "Retaliation": ['retaliation_expected', 'retaliation_not_expected', 'grim_trigger', 'tit_for_tat'],
+    "Target's status/support": ['target_has_high_status', 'target_has_low_status', 'target_has_supporters', 'target_no_supporters']
+}
+
+# Function to generate and save plots
+def generate_and_save_plot(title, keys, filename):
+    keys_with_baseline = ['no_context'] + keys
+    subset_data = plot_data[plot_data['context_key'].isin(keys_with_baseline)]
+    individual_data = data_cleaned[data_cleaned['context_key'].isin(keys_with_baseline)]
+    
+    plt.figure(figsize=(12, 6))
+    for key in keys_with_baseline:
+        plt.scatter([key] * len(individual_data[individual_data['context_key'] == key]), 
+                    individual_data[individual_data['context_key'] == key]['probability'], 
+                    color='black', s=15, alpha=0.5)
+    sns.pointplot(data=subset_data, x='context_key', y='probability', join=False, ci=None, color='blue', markers='D', scale=1.5, order=keys_with_baseline)
+    plt.errorbar(x=subset_data['context_key'], y=subset_data['probability'], yerr=(subset_data['probability'] - subset_data['lower_ci'], subset_data['upper_ci'] - subset_data['probability']), fmt='o', color='black', capsize=3)
+    plt.title(title)
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.savefig(filename)
+
+# Generate and save plots for each grouping
+save_path = "/path/to/save/"
+for title, keys in groupings.items():
+    filename = f"{save_path}{title}.png"
+    generate_and_save_plot(title, keys, filename)
+
+# Generate and save the comprehensive plot
+filename = f"{save_path}Comprehensive.png"
+all_keys = [key for group in groupings.values() for key in group]
+generate_and_save_plot("Comprehensive", all_keys, filename)
