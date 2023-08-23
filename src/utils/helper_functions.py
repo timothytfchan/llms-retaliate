@@ -5,6 +5,8 @@ import openai
 from dotenv import load_dotenv
 import pandas as pd
 from typing import Dict, List, Mapping, Optional
+import re
+import matplotlib.pyplot as plt
 
 # Set OpenAI API key
 ENV_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
@@ -51,3 +53,36 @@ def get_last_processed_row(path, default_header=None):
             with open(path, 'w') as f:
                 f.write(default_header + "\n")
         return 0
+
+'''
+Pattern:
+A number, followed by a dot, then a space.
+Any sequence of characters (non-greedy).
+Ending with a colon.
+'''
+def extract_pattern(text):
+    expressions = re.findall(r'\d+\.\s[^:]+:', text)
+    return expressions
+
+def process_csv_and_plot(target_word, input_filepath, output_csv_filepath, output_image_filepath):
+    # Load the CSV file
+    df = pd.read_csv(input_filepath)
+    
+    # Create a new column 'labels' based on the presence of the target_word in the 'completion' column
+    df['labels'] = df['completion'].str.contains(target_word, case=False).astype(int)
+    
+    # Save the modified dataframe to the provided output filepath
+    df.to_csv(output_csv_filepath, index=False)
+    
+    # Count the number of completions where target_word appears for different unique 'context_key' values
+    context_counts = df.groupby('context_key')['labels'].sum().sort_values()
+    
+    # Save the bar chart as a PNG image file
+    plt.figure(figsize=(15, 10))
+    context_counts.plot(kind='barh')
+    plt.xlabel('No. of completions where {target_word} appears')
+    plt.ylabel('Context')
+    plt.title(f'Occurrences of {target_word} by context')
+    plt.tight_layout()
+    plt.savefig(output_image_filepath)
+    plt.close()
