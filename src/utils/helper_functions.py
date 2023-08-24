@@ -54,8 +54,7 @@ def get_last_processed_row(path, default_header=None):
                 f.write(default_header + "\n")
         return 0
 
-def get_embedding_with_retries(text, model: str ="text-embedding-ada-002", max_retries: int = 5, retry_interval_sec: int = 20):
-    text = text.replace("\n", " ")
+def get_embedding_with_retries(text, model: str ="text-embedding-ada-002", max_retries: int = 5, retry_interval_sec: int = 10):
     for n_attempts_remaining in range(max_retries, 0, -1):
         try:
             res = openai.Embedding.create(input = [text], model=model)['data'][0]['embedding']
