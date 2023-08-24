@@ -18,7 +18,7 @@ def get_single_embedding(row, model):
         return get_embedding_with_retries(row['completion'], model=model)
     return row['embedding']
 
-def get_embeddings(COMPLETIONS_PATH: str, EMBEDDINGS_PATH: str = None, EMBEDDINGS_MODEL: str = 'text-embedding-ada-002', n_processes: int = None):
+def get_embeddings(COMPLETIONS_PATH: str, EMBEDDINGS_PATH: str = None, EMBEDDINGS_MODEL: str = 'text-embedding-ada-002', n_processes: int = 4):
     try:
         df = pd.read_csv(COMPLETIONS_PATH)
     except FileNotFoundError:
@@ -42,16 +42,17 @@ def get_embeddings(COMPLETIONS_PATH: str, EMBEDDINGS_PATH: str = None, EMBEDDING
         embeddings = list(executor.map(get_single_embedding, df_embeddings.to_dict(orient='records'), [EMBEDDINGS_MODEL]*len(df_embeddings)))
         df_embeddings['embedding'] = embeddings
 
-    """
-    # Run if passed all checks
-    last_save_time = time.time()
-    for i, row in df_embeddings.iterrows():
-        if pd.isna(row['embedding']):
-            df_embeddings.at[i, 'embedding'] = get_embedding_with_retries(row['completion'], model=EMBEDDINGS_MODEL)
-
-        if (time.time() - last_save_time) > 1800:  # 1800 seconds = 30 minutes
-            df_embeddings.to_csv(EMBEDDINGS_PATH, index=False)
-            last_save_time = time.time()
-    """
     df_embeddings.to_csv(EMBEDDINGS_PATH, index=False)
     return EMBEDDINGS_PATH
+
+"""
+# Run if passed all checks
+last_save_time = time.time()
+for i, row in df_embeddings.iterrows():
+    if pd.isna(row['embedding']):
+        df_embeddings.at[i, 'embedding'] = get_embedding_with_retries(row['completion'], model=EMBEDDINGS_MODEL)
+
+    if (time.time() - last_save_time) > 1800:  # 1800 seconds = 30 minutes
+        df_embeddings.to_csv(EMBEDDINGS_PATH, index=False)
+        last_save_time = time.time()
+"""

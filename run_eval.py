@@ -7,6 +7,7 @@ Does NOT include analysis.
 """
 
 import os
+from multiprocessing import freeze_support
 from src.generate_prompts import generate_prompts
 from src.get_completions.decisions import get_completions_decision
 from src.get_completions.one_message import get_completions
@@ -91,30 +92,32 @@ for MODEL in MODELS_LIST:
     print(f"Finished {MODEL}")
 
     # Get embeddings
+    if __name__ == '__main__':
+        freeze_support()
 
-    EMBEDDINGS_PATH_BENEFITS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC)
-    print("Finished EMBEDDINGS_PATH_BENEFITS_DESC")
-    kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_DESC)
+        EMBEDDINGS_PATH_BENEFITS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC)
+        print("Finished EMBEDDINGS_PATH_BENEFITS_DESC")
+        kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_DESC)
 
-    EMBEDDINGS_PATH_FOLLOW_UP_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC)
-    print("Finished EMBEDDINGS_PATH_FOLLOW_UP_DESC")
-    kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_DESC)
+        EMBEDDINGS_PATH_FOLLOW_UP_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC)
+        print("Finished EMBEDDINGS_PATH_FOLLOW_UP_DESC")
+        kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_DESC)
 
-    EMBEDDINGS_PATH_METHODS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC)
-    print("Finished EMBEDDINGS_PATH_METHODS_DESC")
-    kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_DESC)
+        EMBEDDINGS_PATH_METHODS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC)
+        print("Finished EMBEDDINGS_PATH_METHODS_DESC")
+        kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_DESC)
 
-    EMBEDDINGS_PATH_BENEFITS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES)
-    print("Finished EMBEDDINGS_PATH_BENEFITS_PRES")
-    kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_PRES)
+        EMBEDDINGS_PATH_BENEFITS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES)
+        print("Finished EMBEDDINGS_PATH_BENEFITS_PRES")
+        kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_PRES)
 
-    EMBEDDINGS_PATH_FOLLOW_UP_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES)
-    print("Finished EMBEDDINGS_PATH_FOLLOW_UP_PRES")
-    kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_PRES)
+        EMBEDDINGS_PATH_FOLLOW_UP_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES)
+        print("Finished EMBEDDINGS_PATH_FOLLOW_UP_PRES")
+        kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_PRES)
 
-    EMBEDDINGS_PATH_METHODS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES)
-    print("Finished EMBEDDINGS_PATH_METHODS_PRES")
-    kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_PRES)
+        EMBEDDINGS_PATH_METHODS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES)
+        print("Finished EMBEDDINGS_PATH_METHODS_PRES")
+        kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_PRES)
 
     print(f"Finished {MODEL}")
 
