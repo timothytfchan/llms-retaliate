@@ -54,14 +54,37 @@ def get_last_processed_row(path, default_header=None):
                 f.write(default_header + "\n")
         return 0
 
+def get_embedding_with_retries(text, model: str ="text-embedding-ada-002", max_retries: int = 5, retry_interval_sec: int = 20):
+    text = text.replace("\n", " ")
+    for n_attempts_remaining in range(max_retries, 0, -1):
+        try:
+            res = openai.Embedding.create(input = [text], model=model)['data'][0]['embedding']
+            return res
+        except (
+            openai.error.RateLimitError,
+            openai.error.ServiceUnavailableError,
+            openai.error.APIError,
+            openai.error.APIConnectionError,
+            openai.error.Timeout,
+            openai.error.TryAgain,
+            openai.error.OpenAIError,
+            ) as e:
+            print(e)
+            print(f"Hit openai.error exception. Waiting {retry_interval_sec} seconds for retry... ({n_attempts_remaining - 1} attempts remaining)", flush=True)
+            time.sleep(retry_interval_sec)
+    return []
+
 '''
 Pattern:
 A number, followed by a dot, then a space.
 Any sequence of characters (non-greedy).
 Ending with a colon.
 '''
+
 def extract_pattern(text):
-    expressions = re.findall(r'\d+\.\s[^:]+:', text)
+    expressions = re.findall(r'(\d+)\.\s([^:]+):', text)
+    if not expressions:
+        return [("N/A", "N/A")]
     return expressions
 
 def process_csv_and_plot(target_word, input_filepath, output_csv_filepath, output_image_filepath):
