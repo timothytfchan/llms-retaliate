@@ -2,7 +2,7 @@
 Includes:
 1. Prompt generation
 2. Getting model completions
-3. Getting models to label model completions
+3. Getting embeddings of completions
 Does NOT include analysis.
 """
 
@@ -26,11 +26,6 @@ EMBEDDINGS_MODEL = 'text-embedding-ada-002'
 
 # Generate prompts
 PROMPTS_PATH = generate_prompts(SCENARIOS_PATH = SCENARIOS_PATH, CONTEXT_PATH = CONTEXT_PATH, QUESTIONS_PATH = QUESTIONS_PATH)
-
-# Dataset paths for first KMeans clustering
-kmeans_datasets_first = []
-# Dataset paths for second KMeans clustering
-kmeans_datasets_second = []
 
 for MODEL in MODELS_LIST:
     print(f"Starting {MODEL}")
@@ -97,32 +92,29 @@ for MODEL in MODELS_LIST:
 
         EMBEDDINGS_PATH_BENEFITS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC)
         print("Finished EMBEDDINGS_PATH_BENEFITS_DESC")
-        kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_DESC)
+        #kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_DESC)
 
         EMBEDDINGS_PATH_FOLLOW_UP_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC)
         print("Finished EMBEDDINGS_PATH_FOLLOW_UP_DESC")
-        kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_DESC)
+        #kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_DESC)
 
         EMBEDDINGS_PATH_METHODS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC)
         print("Finished EMBEDDINGS_PATH_METHODS_DESC")
-        kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_DESC)
+        #kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_DESC)
 
         EMBEDDINGS_PATH_BENEFITS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES)
         print("Finished EMBEDDINGS_PATH_BENEFITS_PRES")
-        kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_PRES)
+        #kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_PRES)
 
         EMBEDDINGS_PATH_FOLLOW_UP_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES)
         print("Finished EMBEDDINGS_PATH_FOLLOW_UP_PRES")
-        kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_PRES)
+        #kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_PRES)
 
         EMBEDDINGS_PATH_METHODS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES)
         print("Finished EMBEDDINGS_PATH_METHODS_PRES")
-        kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_PRES)
+        #kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_PRES)
 
     print(f"Finished {MODEL}")
-
-# Get clusters using kmeans_datasets_first and kmeans_datasets_second
-
 
 """
 # Label completions
