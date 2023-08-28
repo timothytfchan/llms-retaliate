@@ -4,7 +4,7 @@ from ..utils.labeling_prompts import labeling_prompts
 from ..utils.helper_functions import chat_completion_with_retries, save_labels, get_last_processed_row
 
 def simple_label_completions(EMBEDDINGS_PATH,
-                             MODEL = 'gpt-3.5-turbo-0301',
+                             MODEL = 'gpt-3.5-turbo',
                              LABELING_PROMPT_FILTER = "simple_methods",
                              LABELS_PATH = None,
                              acceptable_answers = None
