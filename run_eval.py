@@ -7,13 +7,14 @@ Does NOT include analysis.
 """
 
 import os
-from multiprocessing import freeze_support
+from multiprocessing import freeze_support, Pool
 from src.generate_prompts import generate_prompts
 from src.get_completions.decisions import get_completions_decision
 from src.get_completions.one_message import get_completions
 from src.get_completions.follow_up import get_completions_follow_up
 from src.evaluation.label_completions import label_completions
 from src.analysis.embeddings import get_embeddings
+from src.evaluation.simple_label_completions import simple_label_completions
 
 # Configuration
 SCENARIOS_PATH = os.path.join(os.path.dirname(__file__), 'datasets', 'raw', 'scenarios.csv')
@@ -26,6 +27,8 @@ EMBEDDINGS_MODEL = 'text-embedding-ada-002'
 
 # Generate prompts
 PROMPTS_PATH = generate_prompts(SCENARIOS_PATH = SCENARIOS_PATH, CONTEXT_PATH = CONTEXT_PATH, QUESTIONS_PATH = QUESTIONS_PATH)
+
+embeddings_list = []
 
 for MODEL in MODELS_LIST:
     print(f"Starting {MODEL}")
@@ -83,41 +86,43 @@ for MODEL in MODELS_LIST:
                                                     PROMPTS_PATH = PROMPTS_PATH,
                                                     COMPLETIONS_PATH = None)
     print("Finished COMPLETIONS_PATH_METHODS_PRES")
-        
-    print(f"Finished {MODEL}")
 
+    
     # Get embeddings
-    if __name__ == '__main__':
-        freeze_support()
+    EMBEDDINGS_PATH_BENEFITS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC)
+    #embeddings_list.append(EMBEDDINGS_PATH_BENEFITS_DESC)
+    print("Finished EMBEDDINGS_PATH_BENEFITS_DESC")
 
-        EMBEDDINGS_PATH_BENEFITS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC)
-        print("Finished EMBEDDINGS_PATH_BENEFITS_DESC")
-        #kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_DESC)
+    EMBEDDINGS_PATH_FOLLOW_UP_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC)
+    embeddings_list.append(EMBEDDINGS_PATH_FOLLOW_UP_DESC)
+    print("Finished EMBEDDINGS_PATH_FOLLOW_UP_DESC")
 
-        EMBEDDINGS_PATH_FOLLOW_UP_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC)
-        print("Finished EMBEDDINGS_PATH_FOLLOW_UP_DESC")
-        #kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_DESC)
+    EMBEDDINGS_PATH_METHODS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC)
+    embeddings_list.append(EMBEDDINGS_PATH_METHODS_DESC)
+    print("Finished EMBEDDINGS_PATH_METHODS_DESC")
 
-        EMBEDDINGS_PATH_METHODS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_DESC)
-        print("Finished EMBEDDINGS_PATH_METHODS_DESC")
-        #kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_DESC)
+    EMBEDDINGS_PATH_BENEFITS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES)
+    #embeddings_list.append(EMBEDDINGS_PATH_BENEFITS_PRES)
+    print("Finished EMBEDDINGS_PATH_BENEFITS_PRES")
 
-        EMBEDDINGS_PATH_BENEFITS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES)
-        print("Finished EMBEDDINGS_PATH_BENEFITS_PRES")
-        #kmeans_datasets_first.append(EMBEDDINGS_PATH_BENEFITS_PRES)
+    EMBEDDINGS_PATH_FOLLOW_UP_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES)
+    embeddings_list.append(EMBEDDINGS_PATH_FOLLOW_UP_PRES)
+    print("Finished EMBEDDINGS_PATH_FOLLOW_UP_PRES")
 
-        EMBEDDINGS_PATH_FOLLOW_UP_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES)
-        print("Finished EMBEDDINGS_PATH_FOLLOW_UP_PRES")
-        #kmeans_datasets_second.append(EMBEDDINGS_PATH_FOLLOW_UP_PRES)
-
-        EMBEDDINGS_PATH_METHODS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES)
-        print("Finished EMBEDDINGS_PATH_METHODS_PRES")
-        #kmeans_datasets_second.append(EMBEDDINGS_PATH_METHODS_PRES)
+    EMBEDDINGS_PATH_METHODS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_METHODS_PRES)
+    embeddings_list.append(EMBEDDINGS_PATH_METHODS_PRES)
+    print("Finished EMBEDDINGS_PATH_METHODS_PRES")
 
     print(f"Finished {MODEL}")
+
+# Get simple labels
+if __name__ == '__main__':
+    with Pool(processes=4) as pool:
+        LABEL_PATH = pool.map(simple_label_completions, embeddings_list)
+        print(f"Finished {LABEL_PATH}")
 
 """
-# Label completions
+# JSON label completions
 # Descriptive
 LABELS_PATH_BENEFITS_DESC = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC,
                                                 MODEL = EVAL_MODEL, BATCH_SIZE = 10,

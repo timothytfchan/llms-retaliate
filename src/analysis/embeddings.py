@@ -34,7 +34,7 @@ def get_embeddings(COMPLETIONS_PATH: str, EMBEDDINGS_PATH: str = None, EMBEDDING
         df_embeddings['embedding'] = None
     else:
         df_embeddings = pd.read_csv(EMBEDDINGS_PATH)
-
+    
     if len(df_embeddings) == len(df_embeddings['embedding'].dropna()):
         return EMBEDDINGS_PATH
     
@@ -44,15 +44,3 @@ def get_embeddings(COMPLETIONS_PATH: str, EMBEDDINGS_PATH: str = None, EMBEDDING
 
     df_embeddings.to_csv(EMBEDDINGS_PATH, index=False)
     return EMBEDDINGS_PATH
-
-"""
-# Run if passed all checks
-last_save_time = time.time()
-for i, row in df_embeddings.iterrows():
-    if pd.isna(row['embedding']):
-        df_embeddings.at[i, 'embedding'] = get_embedding_with_retries(row['completion'], model=EMBEDDINGS_MODEL)
-
-    if (time.time() - last_save_time) > 1800:  # 1800 seconds = 30 minutes
-        df_embeddings.to_csv(EMBEDDINGS_PATH, index=False)
-        last_save_time = time.time()
-"""

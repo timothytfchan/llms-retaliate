@@ -22,8 +22,8 @@ def chat_completion_with_retries(model: str, messages: List, max_retries: int = 
                 **kwargs)
             
             if validation_fn is not None:
-                if not validation_fn(res):
-                    print(f"VALIDATION FAILED!\nResponse:\n{res}\nTrying again.")
+                if not validation_fn(res["choices"][0]["message"]["content"]):
+                    print(f"VALIDATION FAILED!\nTrying again.")
                     continue
             return res
         except (
@@ -54,7 +54,22 @@ def get_last_processed_row(path, default_header=None):
                 f.write(default_header + "\n")
         return 0
 
+'''
+Pattern:
+A number, followed by a dot, then a space.
+Any sequence of characters (non-greedy).
+Ending with a colon.
+'''
+
+def extract_pattern(text):
+    expressions = re.search(r'(\d+)\.\s([^:]+):', text) # Finds first item
+    if not expressions:
+        # get first 10 space-separated items in the text as a single string
+        return ' '.join(text.split(" ")[:10])
+    return expressions.group(2)
+
 def get_embedding_with_retries(text, model: str ="text-embedding-ada-002", max_retries: int = 5, retry_interval_sec: int = 10):
+    #text = extract_pattern(text) # We are temporarily changing this function so that the patterns/first 10 items are extracted from the text
     for n_attempts_remaining in range(max_retries, 0, -1):
         try:
             res = openai.Embedding.create(input = [text], model=model)['data'][0]['embedding']
@@ -72,19 +87,6 @@ def get_embedding_with_retries(text, model: str ="text-embedding-ada-002", max_r
             print(f"Hit openai.error exception. Waiting {retry_interval_sec} seconds for retry... ({n_attempts_remaining - 1} attempts remaining)", flush=True)
             time.sleep(retry_interval_sec)
     return []
-
-'''
-Pattern:
-A number, followed by a dot, then a space.
-Any sequence of characters (non-greedy).
-Ending with a colon.
-'''
-
-def extract_pattern(text):
-    expressions = re.findall(r'(\d+)\.\s([^:]+):', text)
-    if not expressions:
-        return [("N/A", "N/A")]
-    return expressions
 
 def process_csv_and_plot(target_word, input_filepath, output_csv_filepath, output_image_filepath):
     # Load the CSV file
