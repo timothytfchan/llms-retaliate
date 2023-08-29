@@ -29,6 +29,7 @@ EMBEDDINGS_MODEL = 'text-embedding-ada-002'
 PROMPTS_PATH = generate_prompts(SCENARIOS_PATH = SCENARIOS_PATH, CONTEXT_PATH = CONTEXT_PATH, QUESTIONS_PATH = QUESTIONS_PATH)
 
 embeddings_list = []
+embeddings_list_2 = []
 
 for MODEL in MODELS_LIST:
     print(f"Starting {MODEL}")
@@ -90,7 +91,7 @@ for MODEL in MODELS_LIST:
     
     # Get embeddings
     EMBEDDINGS_PATH_BENEFITS_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_DESC)
-    #embeddings_list.append(EMBEDDINGS_PATH_BENEFITS_DESC)
+    embeddings_list_2.append(EMBEDDINGS_PATH_BENEFITS_DESC)
     print("Finished EMBEDDINGS_PATH_BENEFITS_DESC")
 
     EMBEDDINGS_PATH_FOLLOW_UP_DESC = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_DESC)
@@ -102,7 +103,7 @@ for MODEL in MODELS_LIST:
     print("Finished EMBEDDINGS_PATH_METHODS_DESC")
 
     EMBEDDINGS_PATH_BENEFITS_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_BENEFITS_PRES)
-    #embeddings_list.append(EMBEDDINGS_PATH_BENEFITS_PRES)
+    embeddings_list_2.append(EMBEDDINGS_PATH_BENEFITS_PRES)
     print("Finished EMBEDDINGS_PATH_BENEFITS_PRES")
 
     EMBEDDINGS_PATH_FOLLOW_UP_PRES = get_embeddings(COMPLETIONS_PATH = COMPLETIONS_PATH_FOLLOW_UP_PRES)
@@ -115,11 +116,28 @@ for MODEL in MODELS_LIST:
 
     print(f"Finished {MODEL}")
 
+def wrapper_function(EMBEDDINGS_PATH):
+    return simple_label_completions(EMBEDDINGS_PATH,
+                                    MODEL = 'gpt-3.5-turbo',
+                                    TEMPERATURE = 0.1,
+                                    LABELING_PROMPT_FILTER = "simple_benefits",
+                                    LABELS_PATH = None,
+                                    acceptable_answers = ["Retribution and emotional or personal satisfaction",
+                                                          "Other emotional benefits",
+                                                          "Empowerment of the punisher",
+                                                          "Deterrence and preventing future issues",
+                                                          "Financial compensation and restitution",
+                                                          "Improving reputation, gaining respect, and asserting authority",
+                                                          "Ensures or upholds principles (fairness etc.)",
+                                                          "None of the above"])
+
 # Get simple labels
 if __name__ == '__main__':
     with Pool(processes=4) as pool:
-        LABEL_PATH = pool.map(simple_label_completions, embeddings_list)
-        print(f"Finished {LABEL_PATH}")
+        #LABEL_PATH = pool.map(simple_label_completions, embeddings_list)
+        #print(f"Finished {LABEL_PATH}")
+        LABEL_PATH_2 = pool.map(wrapper_function, embeddings_list_2)
+        print(f"Finished {LABEL_PATH_2}")
 
 """
 # JSON label completions

@@ -3,6 +3,16 @@
 def labeling_prompts(LABELING_PROMPT_FILTER):
     filter_to_labeling = dict()
 
+    filter_to_labeling['simple_benefits'] = """{acceptable_answers_joined}
+
+Which of the above categories does the following suggested benefit of punishment fit best into? First, provide your reasoning step by step in <reasoning></reasoning> tags. Then, provide your answer in <answer></answer> tags. You can only choose one answer. Unless absolutely necessary, *do not* choose "None of the above".
+
+"{samples_text}"
+
+To conclude your response, *you must* provide your final answer surrounded by <answer></answer> tags, like this <answer> Your answer here </answer>.
+
+Reasoning: <reasoning>"""
+
     filter_to_labeling['simple_methods'] = """{acceptable_answers_joined}
 
 Which of the above categories does the following suggested punishment fit best into? First, provide your reasoning step by step in <reasoning></reasoning> tags. Then, provide your answer in <answer></answer> tags. You can only choose one answer. Unless absolutely necessary, *do not* choose "None of the above.

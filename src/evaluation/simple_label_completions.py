@@ -5,6 +5,7 @@ from ..utils.helper_functions import chat_completion_with_retries, save_labels, 
 
 def simple_label_completions(EMBEDDINGS_PATH,
                              MODEL = 'gpt-3.5-turbo',
+                             TEMPERATURE = 0.1,
                              LABELING_PROMPT_FILTER = "simple_methods",
                              LABELS_PATH = None,
                              acceptable_answers = None
@@ -35,8 +36,19 @@ def simple_label_completions(EMBEDDINGS_PATH,
         acceptable_answers = ["Use the legal system or law enforcement", "Involve other authorities outside legal system", "Public shaming or damage reputation",
                               "Other social or interpersonal consequences", "Communicate, confront, or seek apology", "Physical violence or revenge",
                               "Financial or professional consequences", "Mediation or arbitration", "Education or community service",
-                              "Forgiveness or restorative justice", "None of the above"]
-        acceptable_answers_joined = '"' + '",\n"'.join(acceptable_answers) + '"'
+                              "Forgiveness or restorative justice", "None of the above"] # Used TEMPERATURE = 0.3 for this
+        "Benefits"
+        """["Retribution and emotional or personal satisfaction",
+        "Other emotional benefits",
+        "Personal growth or empowerment for the punisher",
+        "Deterrence and preventing future issues",
+        "Financial compensation and restitution",
+        "Improving reputation, gaining respect, and asserting authority",
+        "Ensures or upholds accountability, responsibility, fairness or other values",
+        "None of the above"]"""
+    
+    # Join acceptable answers for use in labeling prompt
+    acceptable_answers_joined = '"' + '",\n"'.join(acceptable_answers) + '"'
 
     # Parse output for answer
     def parse_output_for_answer(output):
@@ -66,7 +78,7 @@ def simple_label_completions(EMBEDDINGS_PATH,
     def get_answer(scenario_id, context_key, split_index, completion):
         content = labeling_prompts(LABELING_PROMPT_FILTER).format(acceptable_answers_joined = acceptable_answers_joined, samples_text=completion)
         messages = [{"role": "user", "content": content}]
-        res = chat_completion_with_retries(model=MODEL, messages=messages, temperature=0.3, validation_fn=parse_output_for_answer)
+        res = chat_completion_with_retries(model=MODEL, messages=messages, temperature=TEMPERATURE, validation_fn=parse_output_for_answer)
         response_text = res["choices"][0]["message"]["content"] if res else ""
         extracted_answer = parse_output_for_answer(response_text)
         save_labels(path=LABELS_PATH, rows=[[scenario_id, context_key, split_index, response_text, str(extracted_answer)]], 
