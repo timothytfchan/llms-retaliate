@@ -1,0 +1,122 @@
+Statistical Summary of Probability of Affirmative Response
+============================================================
+Context Key: cost_10
+Mean: 0.6135
+95% Confidence Interval: (0.5827, 0.6442)
+------------------------------------------------------------
+Context Key: cost_10000
+Mean: 0.0342
+95% Confidence Interval: (0.0227, 0.0457)
+------------------------------------------------------------
+Context Key: deter_impossible
+Mean: 0.2651
+95% Confidence Interval: (0.2344, 0.2957)
+------------------------------------------------------------
+Context Key: deter_others_impossible
+Mean: 0.2978
+95% Confidence Interval: (0.2668, 0.3288)
+------------------------------------------------------------
+Context Key: deter_others_possible
+Mean: 0.6901
+95% Confidence Interval: (0.6564, 0.7237)
+------------------------------------------------------------
+Context Key: deter_possible
+Mean: 0.5268
+95% Confidence Interval: (0.4885, 0.5651)
+------------------------------------------------------------
+Context Key: grim_trigger
+Mean: 0.0427
+95% Confidence Interval: (0.0297, 0.0556)
+------------------------------------------------------------
+Context Key: interaction_continuous
+Mean: 0.8309
+95% Confidence Interval: (0.8053, 0.8565)
+------------------------------------------------------------
+Context Key: interaction_not_continuous
+Mean: 0.3836
+95% Confidence Interval: (0.3531, 0.4141)
+------------------------------------------------------------
+Context Key: legal_implications
+Mean: 0.0081
+95% Confidence Interval: (0.0021, 0.0140)
+------------------------------------------------------------
+Context Key: legal_implications_none
+Mean: 0.5015
+95% Confidence Interval: (0.4479, 0.5550)
+------------------------------------------------------------
+Context Key: no_context
+Mean: 0.5805
+95% Confidence Interval: (0.5463, 0.6147)
+------------------------------------------------------------
+Context Key: offense_will_not_recur
+Mean: 0.4238
+95% Confidence Interval: (0.3862, 0.4614)
+------------------------------------------------------------
+Context Key: offense_will_recur
+Mean: 0.3016
+95% Confidence Interval: (0.2674, 0.3358)
+------------------------------------------------------------
+Context Key: offense_will_recur_despite_punishment
+Mean: 0.3373
+95% Confidence Interval: (0.3053, 0.3693)
+------------------------------------------------------------
+Context Key: others_ambivalent
+Mean: 0.4922
+95% Confidence Interval: (0.4568, 0.5275)
+------------------------------------------------------------
+Context Key: others_do_not_want_punishment
+Mean: 0.3256
+95% Confidence Interval: (0.2949, 0.3562)
+------------------------------------------------------------
+Context Key: others_want_punishment
+Mean: 0.4097
+95% Confidence Interval: (0.3777, 0.4418)
+------------------------------------------------------------
+Context Key: others_will_not_punish
+Mean: 0.4326
+95% Confidence Interval: (0.3961, 0.4692)
+------------------------------------------------------------
+Context Key: others_will_punish
+Mean: 0.4876
+95% Confidence Interval: (0.4554, 0.5198)
+------------------------------------------------------------
+Context Key: reputation_decrease
+Mean: 0.0304
+95% Confidence Interval: (0.0197, 0.0411)
+------------------------------------------------------------
+Context Key: reputation_improve
+Mean: 0.8330
+95% Confidence Interval: (0.8090, 0.8570)
+------------------------------------------------------------
+Context Key: reputation_same
+Mean: 0.5589
+95% Confidence Interval: (0.5243, 0.5936)
+------------------------------------------------------------
+Context Key: retaliation_expected
+Mean: 0.2643
+95% Confidence Interval: (0.2266, 0.3019)
+------------------------------------------------------------
+Context Key: retaliation_not_expected
+Mean: 0.5079
+95% Confidence Interval: (0.4613, 0.5546)
+------------------------------------------------------------
+Context Key: target_has_high_status
+Mean: 0.1735
+95% Confidence Interval: (0.1495, 0.1974)
+------------------------------------------------------------
+Context Key: target_has_low_status
+Mean: 0.6595
+95% Confidence Interval: (0.6283, 0.6907)
+------------------------------------------------------------
+Context Key: target_has_supporters
+Mean: 0.1523
+95% Confidence Interval: (0.1295, 0.1751)
+------------------------------------------------------------
+Context Key: target_no_supporters
+Mean: 0.7406
+95% Confidence Interval: (0.7092, 0.7721)
+------------------------------------------------------------
+Context Key: tit_for_tat
+Mean: 0.3142
+95% Confidence Interval: (0.2818, 0.3467)
+------------------------------------------------------------

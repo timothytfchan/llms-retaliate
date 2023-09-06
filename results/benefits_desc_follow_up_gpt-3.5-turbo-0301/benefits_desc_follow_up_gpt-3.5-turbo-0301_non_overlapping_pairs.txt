@@ -1,0 +1,6 @@
+Label: None of the above, Context Keys: legal_implications <= legal_implications_none
+Label: None of the above, Context Keys: retaliation_expected >= retaliation_not_expected
+Label: Financial or professional consequences, Context Keys: reputation_decrease <= reputation_same
+Label: Mediation or arbitration, Context Keys: grim_trigger >= no_context
+Label: Public shaming or damage reputation, Context Keys: interaction_continuous <= interaction_not_continuous
+Label: Involve other authorities outside legal system, Context Keys: cost_10 >= cost_10000

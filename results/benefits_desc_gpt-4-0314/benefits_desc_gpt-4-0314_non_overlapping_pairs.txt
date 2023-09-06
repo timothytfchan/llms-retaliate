@@ -1,0 +1,8 @@
+Label: Deterrence and preventing future issues, Context Keys: deter_impossible <= deter_possible
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: others_ambivalent <= others_want_punishment
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: others_do_not_want_punishment <= others_want_punishment
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: reputation_decrease <= reputation_improve
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: reputation_improve >= reputation_same
+Label: Retribution and emotional or personal satisfaction, Context Keys: deter_impossible >= deter_possible
+Label: Retribution and emotional or personal satisfaction, Context Keys: deter_others_impossible >= deter_others_possible
+Label: Retribution and emotional or personal satisfaction, Context Keys: interaction_continuous <= interaction_not_continuous

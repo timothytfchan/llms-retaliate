@@ -1,0 +1,7 @@
+Label: Deterrence and preventing future issues, Context Keys: reputation_improve <= reputation_same
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: no_context <= tit_for_tat
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: reputation_decrease <= reputation_improve
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: reputation_improve >= reputation_same
+Label: None of the above, Context Keys: others_do_not_want_punishment >= others_want_punishment
+Label: Retribution and emotional or personal satisfaction, Context Keys: interaction_continuous <= interaction_not_continuous
+Label: Retribution and emotional or personal satisfaction, Context Keys: reputation_improve <= reputation_same

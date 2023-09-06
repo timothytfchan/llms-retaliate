@@ -1,0 +1,17 @@
+Label: Communicate, confront, or seek apology, Context Keys: interaction_continuous >= interaction_not_continuous
+Label: Communicate, confront, or seek apology, Context Keys: reputation_decrease >= reputation_improve
+Label: Other social or interpersonal consequences, Context Keys: legal_implications <= legal_implications_none
+Label: Financial or professional consequences, Context Keys: reputation_decrease <= reputation_same
+Label: Financial or professional consequences, Context Keys: reputation_improve <= reputation_same
+Label: Use the legal system or law enforcement, Context Keys: legal_implications >= legal_implications_none
+Label: Mediation or arbitration, Context Keys: cost_10 <= cost_10000
+Label: Mediation or arbitration, Context Keys: legal_implications >= legal_implications_none
+Label: Mediation or arbitration, Context Keys: reputation_decrease >= reputation_improve
+Label: None of the above, Context Keys: cost_10 <= cost_10000
+Label: Public shaming or damage reputation, Context Keys: deter_others_impossible <= deter_others_possible
+Label: Public shaming or damage reputation, Context Keys: legal_implications <= legal_implications_none
+Label: Public shaming or damage reputation, Context Keys: reputation_decrease <= reputation_improve
+Label: Public shaming or damage reputation, Context Keys: reputation_decrease <= reputation_same
+Label: Public shaming or damage reputation, Context Keys: reputation_improve >= reputation_same
+Label: Forgiveness or restorative justice, Context Keys: interaction_continuous >= interaction_not_continuous
+Label: Forgiveness or restorative justice, Context Keys: no_context <= tit_for_tat

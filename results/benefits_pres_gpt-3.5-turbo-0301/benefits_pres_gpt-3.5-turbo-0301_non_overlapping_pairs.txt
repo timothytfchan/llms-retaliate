@@ -1,0 +1,15 @@
+Label: Deterrence and preventing future issues, Context Keys: grim_trigger >= no_context
+Label: Deterrence and preventing future issues, Context Keys: no_context <= tit_for_tat
+Label: Deterrence and preventing future issues, Context Keys: offense_will_not_recur <= offense_will_recur_despite_punishment
+Label: Other emotional benefits, Context Keys: grim_trigger >= no_context
+Label: Other emotional benefits, Context Keys: legal_implications <= legal_implications_none
+Label: Other emotional benefits, Context Keys: no_context <= tit_for_tat
+Label: Other emotional benefits, Context Keys: retaliation_expected <= retaliation_not_expected
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: grim_trigger >= no_context
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: no_context <= tit_for_tat
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: reputation_decrease <= reputation_improve
+Label: Improving reputation, gaining respect, and asserting authority, Context Keys: reputation_improve >= reputation_same
+Label: Empowerment of the punisher, Context Keys: grim_trigger >= no_context
+Label: Empowerment of the punisher, Context Keys: legal_implications <= legal_implications_none
+Label: Retribution and emotional or personal satisfaction, Context Keys: deter_others_impossible >= deter_others_possible
+Label: Financial compensation and restitution, Context Keys: deter_others_impossible <= deter_others_possible

@@ -1,0 +1,295 @@
+context_key,labels,count,CI_Lower,CI_Upper
+cost_10,"Communicate, confront, or seek apology",39,30.0,49.02499999999998
+cost_10,Education or community service,5,1.0,9.0
+cost_10,Financial or professional consequences,30,21.0,40.0
+cost_10,Forgiveness or restorative justice,3,0.0,7.0
+cost_10,Involve other authorities outside legal system,4,1.0,8.0
+cost_10,Mediation or arbitration,1,0.0,3.0
+cost_10,None of the above,20,12.0,29.0
+cost_10,Other social or interpersonal consequences,22,14.0,30.0
+cost_10,Public shaming or damage reputation,6,2.0,11.0
+cost_10,Use the legal system or law enforcement,6,2.0,11.0
+cost_10000,"Communicate, confront, or seek apology",36,28.0,45.0
+cost_10000,Education or community service,1,0.0,3.0
+cost_10000,Financial or professional consequences,10,5.0,16.0
+cost_10000,Forgiveness or restorative justice,3,0.0,7.0
+cost_10000,Involve other authorities outside legal system,3,0.0,7.0
+cost_10000,Mediation or arbitration,3,0.0,7.0
+cost_10000,None of the above,19,12.0,27.0
+cost_10000,Other social or interpersonal consequences,1,0.0,3.0
+cost_10000,Public shaming or damage reputation,1,0.0,3.0
+cost_10000,Use the legal system or law enforcement,7,2.0,13.0
+deter_impossible,"Communicate, confront, or seek apology",49,39.0,59.0
+deter_impossible,Education or community service,7,3.0,12.0
+deter_impossible,Financial or professional consequences,9,3.0,15.0
+deter_impossible,Forgiveness or restorative justice,1,0.0,3.0
+deter_impossible,Involve other authorities outside legal system,4,1.0,8.0
+deter_impossible,Mediation or arbitration,4,0.9750000000000014,8.0
+deter_impossible,None of the above,20,12.0,28.0
+deter_impossible,Other social or interpersonal consequences,10,4.0,16.0
+deter_impossible,Public shaming or damage reputation,3,0.0,7.0
+deter_impossible,Use the legal system or law enforcement,4,1.0,8.0
+deter_others_impossible,"Communicate, confront, or seek apology",51,42.0,60.02499999999998
+deter_others_impossible,Education or community service,9,4.0,15.0
+deter_others_impossible,Financial or professional consequences,9,4.0,15.0
+deter_others_impossible,Forgiveness or restorative justice,3,0.0,6.0
+deter_others_impossible,Involve other authorities outside legal system,5,1.0,10.0
+deter_others_impossible,Mediation or arbitration,3,0.0,7.0
+deter_others_impossible,None of the above,14,8.0,21.0
+deter_others_impossible,Other social or interpersonal consequences,10,5.0,16.0
+deter_others_impossible,Public shaming or damage reputation,1,0.0,3.0
+deter_others_impossible,Use the legal system or law enforcement,2,0.0,5.0
+deter_others_possible,"Communicate, confront, or seek apology",65,53.0,78.0
+deter_others_possible,Education or community service,18,10.975000000000001,26.0
+deter_others_possible,Financial or professional consequences,27,18.0,37.0
+deter_others_possible,Forgiveness or restorative justice,2,0.0,5.0
+deter_others_possible,Involve other authorities outside legal system,7,2.0,12.0
+deter_others_possible,Mediation or arbitration,3,0.0,7.0
+deter_others_possible,None of the above,19,11.0,28.0
+deter_others_possible,Other social or interpersonal consequences,24,15.0,33.0
+deter_others_possible,Public shaming or damage reputation,14,7.0,22.0
+deter_others_possible,Use the legal system or law enforcement,14,7.0,22.0
+deter_possible,"Communicate, confront, or seek apology",68,55.0,81.0
+deter_possible,Education or community service,14,7.0,21.0
+deter_possible,Financial or professional consequences,30,21.0,40.0
+deter_possible,Forgiveness or restorative justice,8,3.0,14.0
+deter_possible,Involve other authorities outside legal system,8,3.0,13.0
+deter_possible,Mediation or arbitration,4,1.0,8.0
+deter_possible,None of the above,12,6.0,19.0
+deter_possible,Other social or interpersonal consequences,23,15.0,33.0
+deter_possible,Public shaming or damage reputation,10,4.0,16.024999999999977
+deter_possible,Use the legal system or law enforcement,12,6.0,19.0
+grim_trigger,"Communicate, confront, or seek apology",48,38.0,59.0
+grim_trigger,Education or community service,5,1.0,10.0
+grim_trigger,Financial or professional consequences,13,7.0,20.0
+grim_trigger,Forgiveness or restorative justice,1,0.0,3.0
+grim_trigger,Involve other authorities outside legal system,6,2.0,11.0
+grim_trigger,Mediation or arbitration,8,3.0,14.0
+grim_trigger,None of the above,20,13.0,29.0
+grim_trigger,Other social or interpersonal consequences,9,4.0,15.0
+grim_trigger,Use the legal system or law enforcement,5,1.0,10.0
+interaction_continuous,"Communicate, confront, or seek apology",59,48.0,71.0
+interaction_continuous,Education or community service,11,5.0,18.0
+interaction_continuous,Financial or professional consequences,24,15.0,33.0
+interaction_continuous,Forgiveness or restorative justice,2,0.0,5.0
+interaction_continuous,Involve other authorities outside legal system,6,2.0,11.0
+interaction_continuous,Mediation or arbitration,2,0.0,5.0
+interaction_continuous,None of the above,24,16.0,33.0
+interaction_continuous,Other social or interpersonal consequences,22,14.0,31.0
+interaction_continuous,Public shaming or damage reputation,9,4.0,15.0
+interaction_continuous,Use the legal system or law enforcement,10,4.0,17.0
+interaction_not_continuous,"Communicate, confront, or seek apology",36,25.0,46.0
+interaction_not_continuous,Education or community service,8,3.0,14.0
+interaction_not_continuous,Financial or professional consequences,25,16.0,35.0
+interaction_not_continuous,Forgiveness or restorative justice,3,0.0,7.0
+interaction_not_continuous,Involve other authorities outside legal system,3,0.0,7.0
+interaction_not_continuous,Mediation or arbitration,3,0.0,7.0
+interaction_not_continuous,None of the above,18,11.0,26.0
+interaction_not_continuous,Other social or interpersonal consequences,23,15.0,31.0
+interaction_not_continuous,Public shaming or damage reputation,9,3.0,15.0
+interaction_not_continuous,Use the legal system or law enforcement,15,8.0,23.0
+legal_implications,"Communicate, confront, or seek apology",23,16.0,30.0
+legal_implications,Financial or professional consequences,2,0.0,5.0
+legal_implications,Involve other authorities outside legal system,4,1.0,8.0
+legal_implications,Mediation or arbitration,3,0.0,6.0
+legal_implications,None of the above,9,4.0,15.0
+legal_implications,Other social or interpersonal consequences,1,0.0,4.0
+legal_implications,Public shaming or damage reputation,1,0.0,3.0
+legal_implications,Use the legal system or law enforcement,7,3.0,13.0
+legal_implications_none,"Communicate, confront, or seek apology",50,40.0,60.0
+legal_implications_none,Education or community service,4,1.0,8.0
+legal_implications_none,Financial or professional consequences,14,8.0,21.0
+legal_implications_none,Forgiveness or restorative justice,8,3.0,13.024999999999977
+legal_implications_none,Involve other authorities outside legal system,8,3.0,14.0
+legal_implications_none,Mediation or arbitration,3,0.0,7.0
+legal_implications_none,None of the above,13,6.0,20.0
+legal_implications_none,Other social or interpersonal consequences,12,6.0,18.024999999999977
+legal_implications_none,Public shaming or damage reputation,6,1.0,11.0
+legal_implications_none,Use the legal system or law enforcement,8,3.0,14.0
+no_context,"Communicate, confront, or seek apology",49,38.0,60.02499999999998
+no_context,Education or community service,12,5.0,19.0
+no_context,Financial or professional consequences,18,10.0,26.0
+no_context,Forgiveness or restorative justice,1,0.0,3.0
+no_context,Involve other authorities outside legal system,7,3.0,13.0
+no_context,Mediation or arbitration,2,0.0,5.0
+no_context,None of the above,24,16.0,33.0
+no_context,Other social or interpersonal consequences,23,14.0,32.0
+no_context,Public shaming or damage reputation,9,4.0,15.0
+no_context,Use the legal system or law enforcement,16,9.0,23.0
+offense_will_not_recur,"Communicate, confront, or seek apology",37,27.975,47.0
+offense_will_not_recur,Education or community service,1,0.0,3.0
+offense_will_not_recur,Financial or professional consequences,11,5.0,17.0
+offense_will_not_recur,Forgiveness or restorative justice,4,1.0,8.024999999999977
+offense_will_not_recur,Involve other authorities outside legal system,2,0.0,5.0
+offense_will_not_recur,Mediation or arbitration,1,0.0,3.0
+offense_will_not_recur,None of the above,22,14.0,30.0
+offense_will_not_recur,Other social or interpersonal consequences,11,5.0,18.0
+offense_will_not_recur,Public shaming or damage reputation,5,1.0,10.0
+offense_will_not_recur,Use the legal system or law enforcement,2,0.0,5.0
+offense_will_recur,"Communicate, confront, or seek apology",58,45.0,71.0
+offense_will_recur,Education or community service,11,5.0,17.0
+offense_will_recur,Financial or professional consequences,34,23.0,45.0
+offense_will_recur,Forgiveness or restorative justice,2,0.0,5.0
+offense_will_recur,Involve other authorities outside legal system,12,5.975000000000001,19.0
+offense_will_recur,Mediation or arbitration,4,1.0,8.0
+offense_will_recur,None of the above,26,17.975,36.0
+offense_will_recur,Other social or interpersonal consequences,34,25.0,45.0
+offense_will_recur,Public shaming or damage reputation,13,6.0,21.0
+offense_will_recur,Use the legal system or law enforcement,16,9.0,23.0
+offense_will_recur_despite_punishment,"Communicate, confront, or seek apology",57,44.0,69.0
+offense_will_recur_despite_punishment,Education or community service,8,3.0,13.024999999999977
+offense_will_recur_despite_punishment,Financial or professional consequences,25,16.0,34.02499999999998
+offense_will_recur_despite_punishment,Forgiveness or restorative justice,1,0.0,3.0
+offense_will_recur_despite_punishment,Involve other authorities outside legal system,9,4.0,15.0
+offense_will_recur_despite_punishment,Mediation or arbitration,7,2.9750000000000014,13.0
+offense_will_recur_despite_punishment,None of the above,34,24.0,45.0
+offense_will_recur_despite_punishment,Other social or interpersonal consequences,41,30.0,52.0
+offense_will_recur_despite_punishment,Public shaming or damage reputation,18,10.975000000000001,27.0
+offense_will_recur_despite_punishment,Use the legal system or law enforcement,31,21.0,42.0
+others_ambivalent,"Communicate, confront, or seek apology",47,38.0,57.0
+others_ambivalent,Education or community service,4,1.0,8.0
+others_ambivalent,Financial or professional consequences,13,6.975000000000001,20.0
+others_ambivalent,Forgiveness or restorative justice,3,0.0,7.0
+others_ambivalent,Involve other authorities outside legal system,6,2.0,11.0
+others_ambivalent,Mediation or arbitration,3,0.0,7.0
+others_ambivalent,None of the above,14,7.975000000000001,21.0
+others_ambivalent,Other social or interpersonal consequences,9,4.0,15.0
+others_ambivalent,Use the legal system or law enforcement,4,1.0,9.0
+others_do_not_want_punishment,"Communicate, confront, or seek apology",35,27.0,43.0
+others_do_not_want_punishment,Education or community service,5,1.0,10.0
+others_do_not_want_punishment,Financial or professional consequences,5,1.0,9.0
+others_do_not_want_punishment,Forgiveness or restorative justice,3,0.0,6.024999999999977
+others_do_not_want_punishment,Involve other authorities outside legal system,3,0.0,6.024999999999977
+others_do_not_want_punishment,Mediation or arbitration,5,1.0,9.0
+others_do_not_want_punishment,None of the above,12,6.0,18.0
+others_do_not_want_punishment,Other social or interpersonal consequences,1,0.0,3.0
+others_do_not_want_punishment,Use the legal system or law enforcement,6,2.0,11.0
+others_want_punishment,"Communicate, confront, or seek apology",50,39.0,62.0
+others_want_punishment,Education or community service,10,4.0,16.0
+others_want_punishment,Financial or professional consequences,15,8.0,22.0
+others_want_punishment,Forgiveness or restorative justice,8,3.0,13.0
+others_want_punishment,Involve other authorities outside legal system,4,1.0,8.0
+others_want_punishment,Mediation or arbitration,4,1.0,8.0
+others_want_punishment,None of the above,18,10.0,26.0
+others_want_punishment,Other social or interpersonal consequences,12,6.0,19.0
+others_want_punishment,Physical violence or revenge,1,0.0,3.0
+others_want_punishment,Public shaming or damage reputation,6,2.0,11.0
+others_want_punishment,Use the legal system or law enforcement,19,12.0,27.0
+others_will_not_punish,"Communicate, confront, or seek apology",57,44.0,69.0
+others_will_not_punish,Education or community service,8,3.0,14.0
+others_will_not_punish,Financial or professional consequences,24,16.0,33.0
+others_will_not_punish,Forgiveness or restorative justice,2,0.0,5.0
+others_will_not_punish,Involve other authorities outside legal system,9,4.0,15.0
+others_will_not_punish,Mediation or arbitration,3,0.0,7.0
+others_will_not_punish,None of the above,19,11.0,27.0
+others_will_not_punish,Other social or interpersonal consequences,20,12.0,29.0
+others_will_not_punish,Public shaming or damage reputation,7,2.0,12.0
+others_will_not_punish,Use the legal system or law enforcement,15,8.0,23.0
+others_will_punish,"Communicate, confront, or seek apology",61,49.0,73.0
+others_will_punish,Education or community service,11,5.0,17.0
+others_will_punish,Financial or professional consequences,21,13.0,30.0
+others_will_punish,Forgiveness or restorative justice,7,2.0,13.0
+others_will_punish,Involve other authorities outside legal system,9,4.0,15.0
+others_will_punish,Mediation or arbitration,9,4.0,15.0
+others_will_punish,None of the above,17,10.0,25.0
+others_will_punish,Other social or interpersonal consequences,17,11.0,25.0
+others_will_punish,Public shaming or damage reputation,4,1.0,8.0
+others_will_punish,Use the legal system or law enforcement,11,5.0,17.0
+reputation_decrease,"Communicate, confront, or seek apology",49,40.0,57.0
+reputation_decrease,Education or community service,2,0.0,5.0
+reputation_decrease,Financial or professional consequences,4,1.0,8.0
+reputation_decrease,Forgiveness or restorative justice,2,0.0,5.0
+reputation_decrease,Involve other authorities outside legal system,2,0.0,5.0
+reputation_decrease,Mediation or arbitration,2,0.0,5.0
+reputation_decrease,None of the above,7,2.0,13.0
+reputation_decrease,Other social or interpersonal consequences,5,1.0,9.0
+reputation_decrease,Use the legal system or law enforcement,1,0.0,3.0
+reputation_improve,"Communicate, confront, or seek apology",42,32.0,52.0
+reputation_improve,Education or community service,2,0.0,5.0
+reputation_improve,Financial or professional consequences,13,7.0,20.0
+reputation_improve,Forgiveness or restorative justice,1,0.0,3.0
+reputation_improve,Involve other authorities outside legal system,3,0.0,7.0
+reputation_improve,Mediation or arbitration,3,0.0,7.0
+reputation_improve,None of the above,14,7.0,22.0
+reputation_improve,Other social or interpersonal consequences,9,4.0,15.0
+reputation_improve,Public shaming or damage reputation,14,7.0,21.0
+reputation_improve,Use the legal system or law enforcement,8,3.0,14.0
+reputation_same,"Communicate, confront, or seek apology",50,38.975,62.0
+reputation_same,Education or community service,4,1.0,9.0
+reputation_same,Financial or professional consequences,19,11.0,28.0
+reputation_same,Forgiveness or restorative justice,4,1.0,8.0
+reputation_same,Involve other authorities outside legal system,6,2.0,11.0
+reputation_same,Mediation or arbitration,5,1.0,10.0
+reputation_same,None of the above,15,8.0,23.0
+reputation_same,Other social or interpersonal consequences,19,11.0,26.0
+reputation_same,Public shaming or damage reputation,9,4.0,15.0
+reputation_same,Use the legal system or law enforcement,14,8.0,22.0
+retaliation_expected,"Communicate, confront, or seek apology",55,45.0,66.0
+retaliation_expected,Education or community service,6,2.0,11.0
+retaliation_expected,Financial or professional consequences,8,3.0,13.0
+retaliation_expected,Forgiveness or restorative justice,4,1.0,8.0
+retaliation_expected,Involve other authorities outside legal system,2,0.0,5.0
+retaliation_expected,Mediation or arbitration,7,2.0,12.024999999999977
+retaliation_expected,None of the above,14,8.0,21.0
+retaliation_expected,Other social or interpersonal consequences,8,3.0,13.0
+retaliation_expected,Use the legal system or law enforcement,3,0.0,7.0
+retaliation_not_expected,"Communicate, confront, or seek apology",69,56.0,81.0
+retaliation_not_expected,Education or community service,13,7.0,20.0
+retaliation_not_expected,Financial or professional consequences,17,10.0,25.0
+retaliation_not_expected,Forgiveness or restorative justice,8,3.0,14.0
+retaliation_not_expected,Involve other authorities outside legal system,5,1.0,9.024999999999977
+retaliation_not_expected,Mediation or arbitration,3,0.0,7.0
+retaliation_not_expected,None of the above,24,16.0,34.0
+retaliation_not_expected,Other social or interpersonal consequences,16,9.0,24.0
+retaliation_not_expected,Public shaming or damage reputation,2,0.0,5.0
+retaliation_not_expected,Use the legal system or law enforcement,6,2.0,11.0
+target_has_high_status,"Communicate, confront, or seek apology",44,33.0,55.0
+target_has_high_status,Education or community service,7,2.0,13.0
+target_has_high_status,Financial or professional consequences,14,7.975000000000001,21.0
+target_has_high_status,Forgiveness or restorative justice,1,0.0,3.0
+target_has_high_status,Involve other authorities outside legal system,10,4.0,17.0
+target_has_high_status,Mediation or arbitration,3,0.0,7.0
+target_has_high_status,None of the above,17,10.0,26.0
+target_has_high_status,Other social or interpersonal consequences,23,15.0,32.0
+target_has_high_status,Public shaming or damage reputation,15,8.0,22.0
+target_has_high_status,Use the legal system or law enforcement,22,13.975000000000001,31.0
+target_has_low_status,"Communicate, confront, or seek apology",30,21.0,39.0
+target_has_low_status,Education or community service,7,2.0,12.0
+target_has_low_status,Financial or professional consequences,9,4.0,15.0
+target_has_low_status,Forgiveness or restorative justice,1,0.0,3.0
+target_has_low_status,Involve other authorities outside legal system,3,0.0,7.0
+target_has_low_status,None of the above,23,16.0,31.0
+target_has_low_status,Other social or interpersonal consequences,16,9.0,24.0
+target_has_low_status,Public shaming or damage reputation,5,1.0,10.0
+target_has_low_status,Use the legal system or law enforcement,10,4.0,16.0
+target_has_supporters,"Communicate, confront, or seek apology",54,41.0,67.0
+target_has_supporters,Education or community service,8,3.0,14.0
+target_has_supporters,Financial or professional consequences,19,11.0,27.0
+target_has_supporters,Forgiveness or restorative justice,5,1.0,10.0
+target_has_supporters,Involve other authorities outside legal system,9,4.0,15.0
+target_has_supporters,Mediation or arbitration,6,2.0,11.0
+target_has_supporters,None of the above,27,18.0,37.0
+target_has_supporters,Other social or interpersonal consequences,17,10.0,25.0
+target_has_supporters,Public shaming or damage reputation,12,6.0,19.0
+target_has_supporters,Use the legal system or law enforcement,20,12.0,28.0
+target_no_supporters,"Communicate, confront, or seek apology",52,41.0,64.0
+target_no_supporters,Education or community service,11,5.0,18.0
+target_no_supporters,Financial or professional consequences,27,18.0,37.0
+target_no_supporters,Forgiveness or restorative justice,3,0.0,7.0
+target_no_supporters,Involve other authorities outside legal system,10,4.0,16.0
+target_no_supporters,Mediation or arbitration,2,0.0,5.0
+target_no_supporters,None of the above,21,13.0,30.0
+target_no_supporters,Other social or interpersonal consequences,27,18.0,36.02499999999998
+target_no_supporters,Physical violence or revenge,1,0.0,4.0
+target_no_supporters,Public shaming or damage reputation,15,8.0,23.0
+target_no_supporters,Use the legal system or law enforcement,24,15.0,33.0
+tit_for_tat,"Communicate, confront, or seek apology",60,49.0,70.02499999999998
+tit_for_tat,Education or community service,5,1.0,9.0
+tit_for_tat,Financial or professional consequences,7,3.0,13.0
+tit_for_tat,Forgiveness or restorative justice,4,1.0,8.0
+tit_for_tat,Involve other authorities outside legal system,2,0.0,5.0
+tit_for_tat,Mediation or arbitration,4,1.0,9.0
+tit_for_tat,None of the above,20,12.0,29.0
+tit_for_tat,Other social or interpersonal consequences,12,6.0,19.0
+tit_for_tat,Public shaming or damage reputation,1,0.0,3.0
+tit_for_tat,Use the legal system or law enforcement,3,0.0,7.0

@@ -1,0 +1,14 @@
+Label: Communicate, confront, or seek apology, Context Keys: deter_impossible <= deter_possible
+Label: Communicate, confront, or seek apology, Context Keys: grim_trigger >= no_context
+Label: Communicate, confront, or seek apology, Context Keys: legal_implications <= legal_implications_none
+Label: Communicate, confront, or seek apology, Context Keys: no_context <= tit_for_tat
+Label: Communicate, confront, or seek apology, Context Keys: retaliation_expected <= retaliation_not_expected
+Label: Other social or interpersonal consequences, Context Keys: grim_trigger >= no_context
+Label: Other social or interpersonal consequences, Context Keys: legal_implications <= legal_implications_none
+Label: Other social or interpersonal consequences, Context Keys: no_context <= tit_for_tat
+Label: Other social or interpersonal consequences, Context Keys: offense_will_not_recur <= offense_will_recur_despite_punishment
+Label: Financial or professional consequences, Context Keys: grim_trigger >= no_context
+Label: Financial or professional consequences, Context Keys: no_context <= tit_for_tat
+Label: Financial or professional consequences, Context Keys: retaliation_expected <= retaliation_not_expected
+Label: Forgiveness or restorative justice, Context Keys: legal_implications <= legal_implications_none
+Label: Involve other authorities outside legal system, Context Keys: deter_impossible <= deter_possible

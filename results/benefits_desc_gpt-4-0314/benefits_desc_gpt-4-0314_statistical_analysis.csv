@@ -1,0 +1,240 @@
+context_key,labels,count,CI_Lower,CI_Upper
+cost_10,Deterrence and preventing future issues,98,83.0,114.02499999999998
+cost_10,Empowerment of the punisher,6,1.0,11.0
+cost_10,Ensures or upholds principles (fairness etc.),47,36.0,60.0
+cost_10,Financial compensation and restitution,7,3.0,12.0
+cost_10,"Improving reputation, gaining respect, and asserting authority",28,19.0,38.0
+cost_10,None of the above,12,5.0,19.0
+cost_10,Other emotional benefits,34,24.0,44.0
+cost_10,Retribution and emotional or personal satisfaction,7,2.0,12.024999999999977
+cost_10000,Deterrence and preventing future issues,110,95.0,125.0
+cost_10000,Empowerment of the punisher,9,4.0,15.0
+cost_10000,Ensures or upholds principles (fairness etc.),41,30.0,52.0
+cost_10000,Financial compensation and restitution,6,2.0,11.0
+cost_10000,"Improving reputation, gaining respect, and asserting authority",32,23.0,43.0
+cost_10000,None of the above,6,2.0,11.0
+cost_10000,Other emotional benefits,34,24.0,44.0
+cost_10000,Retribution and emotional or personal satisfaction,10,5.0,16.0
+deter_impossible,Deterrence and preventing future issues,69,56.0,83.0
+deter_impossible,Empowerment of the punisher,18,10.0,26.0
+deter_impossible,Ensures or upholds principles (fairness etc.),56,43.0,68.0
+deter_impossible,Financial compensation and restitution,2,0.0,5.0
+deter_impossible,"Improving reputation, gaining respect, and asserting authority",23,15.0,32.0
+deter_impossible,None of the above,6,2.0,11.0
+deter_impossible,Other emotional benefits,45,33.0,57.0
+deter_impossible,Retribution and emotional or personal satisfaction,14,7.975000000000001,22.0
+deter_others_impossible,Deterrence and preventing future issues,74,60.975,88.02499999999998
+deter_others_impossible,Empowerment of the punisher,16,8.0,24.0
+deter_others_impossible,Ensures or upholds principles (fairness etc.),41,30.0,52.0
+deter_others_impossible,Financial compensation and restitution,4,1.0,8.0
+deter_others_impossible,"Improving reputation, gaining respect, and asserting authority",23,14.975000000000001,32.0
+deter_others_impossible,None of the above,7,2.9750000000000014,13.0
+deter_others_impossible,Other emotional benefits,54,41.0,67.0
+deter_others_impossible,Retribution and emotional or personal satisfaction,21,13.0,29.024999999999977
+deter_others_possible,Deterrence and preventing future issues,101,86.0,116.0
+deter_others_possible,Empowerment of the punisher,10,4.0,16.0
+deter_others_possible,Ensures or upholds principles (fairness etc.),46,34.0,58.0
+deter_others_possible,Financial compensation and restitution,8,3.0,14.0
+deter_others_possible,"Improving reputation, gaining respect, and asserting authority",32,22.0,43.0
+deter_others_possible,None of the above,11,6.0,18.0
+deter_others_possible,Other emotional benefits,35,25.0,45.0
+deter_others_possible,Retribution and emotional or personal satisfaction,3,0.0,7.0
+deter_possible,Deterrence and preventing future issues,112,96.975,128.0
+deter_possible,Empowerment of the punisher,17,10.0,25.0
+deter_possible,Ensures or upholds principles (fairness etc.),47,35.0,59.0
+deter_possible,Financial compensation and restitution,3,0.0,7.0
+deter_possible,"Improving reputation, gaining respect, and asserting authority",22,13.975000000000001,31.0
+deter_possible,None of the above,16,10.0,24.0
+deter_possible,Other emotional benefits,26,17.0,36.0
+deter_possible,Retribution and emotional or personal satisfaction,2,0.0,5.0
+grim_trigger,Deterrence and preventing future issues,94,79.0,108.0
+grim_trigger,Empowerment of the punisher,16,9.0,24.0
+grim_trigger,Ensures or upholds principles (fairness etc.),60,48.0,73.0
+grim_trigger,Financial compensation and restitution,7,2.9750000000000014,13.0
+grim_trigger,"Improving reputation, gaining respect, and asserting authority",23,15.0,32.0
+grim_trigger,None of the above,9,4.0,15.0
+grim_trigger,Other emotional benefits,25,16.0,34.0
+grim_trigger,Retribution and emotional or personal satisfaction,6,2.0,11.0
+interaction_continuous,Deterrence and preventing future issues,94,79.0,109.0
+interaction_continuous,Empowerment of the punisher,10,5.0,16.0
+interaction_continuous,Ensures or upholds principles (fairness etc.),68,54.975,82.0
+interaction_continuous,Financial compensation and restitution,5,1.0,10.0
+interaction_continuous,"Improving reputation, gaining respect, and asserting authority",25,16.0,35.0
+interaction_continuous,None of the above,10,5.0,16.0
+interaction_continuous,Other emotional benefits,29,20.0,38.0
+interaction_continuous,Retribution and emotional or personal satisfaction,1,0.0,3.0
+interaction_not_continuous,Deterrence and preventing future issues,100,85.975,114.0
+interaction_not_continuous,Empowerment of the punisher,9,4.0,15.0
+interaction_not_continuous,Ensures or upholds principles (fairness etc.),52,40.0,65.0
+interaction_not_continuous,Financial compensation and restitution,14,7.0,22.0
+interaction_not_continuous,"Improving reputation, gaining respect, and asserting authority",16,9.0,24.0
+interaction_not_continuous,None of the above,6,2.0,11.0
+interaction_not_continuous,Other emotional benefits,36,26.0,47.0
+interaction_not_continuous,Retribution and emotional or personal satisfaction,14,8.0,22.0
+legal_implications,Deterrence and preventing future issues,93,78.975,108.02499999999998
+legal_implications,Empowerment of the punisher,10,4.0,16.0
+legal_implications,Ensures or upholds principles (fairness etc.),47,35.975,59.0
+legal_implications,Financial compensation and restitution,15,8.0,22.0
+legal_implications,"Improving reputation, gaining respect, and asserting authority",22,13.0,32.0
+legal_implications,None of the above,3,0.0,7.0
+legal_implications,Other emotional benefits,40,29.0,52.0
+legal_implications,Retribution and emotional or personal satisfaction,16,9.0,24.024999999999977
+legal_implications_none,Deterrence and preventing future issues,102,86.975,117.0
+legal_implications_none,Empowerment of the punisher,16,9.0,24.0
+legal_implications_none,Ensures or upholds principles (fairness etc.),34,24.0,46.0
+legal_implications_none,Financial compensation and restitution,9,4.0,16.0
+legal_implications_none,"Improving reputation, gaining respect, and asserting authority",21,14.0,30.0
+legal_implications_none,None of the above,4,1.0,9.0
+legal_implications_none,Other emotional benefits,43,32.0,55.0
+legal_implications_none,Retribution and emotional or personal satisfaction,12,5.975000000000001,19.0
+no_context,Deterrence and preventing future issues,97,83.0,112.0
+no_context,Empowerment of the punisher,9,4.0,15.0
+no_context,Ensures or upholds principles (fairness etc.),54,42.0,67.0
+no_context,Financial compensation and restitution,18,11.0,26.0
+no_context,"Improving reputation, gaining respect, and asserting authority",12,6.0,19.0
+no_context,None of the above,6,2.0,11.0
+no_context,Other emotional benefits,40,29.0,52.0
+no_context,Retribution and emotional or personal satisfaction,8,3.0,14.0
+offense_will_not_recur,Deterrence and preventing future issues,94,80.0,110.0
+offense_will_not_recur,Empowerment of the punisher,17,9.0,24.0
+offense_will_not_recur,Ensures or upholds principles (fairness etc.),49,37.0,62.0
+offense_will_not_recur,Financial compensation and restitution,8,3.0,14.0
+offense_will_not_recur,"Improving reputation, gaining respect, and asserting authority",13,7.0,20.0
+offense_will_not_recur,None of the above,12,6.0,19.0
+offense_will_not_recur,Other emotional benefits,44,32.0,56.0
+offense_will_not_recur,Retribution and emotional or personal satisfaction,4,1.0,8.0
+offense_will_recur,Deterrence and preventing future issues,108,93.0,124.0
+offense_will_recur,Empowerment of the punisher,11,5.0,18.0
+offense_will_recur,Ensures or upholds principles (fairness etc.),46,34.0,60.0
+offense_will_recur,Financial compensation and restitution,11,5.0,18.0
+offense_will_recur,"Improving reputation, gaining respect, and asserting authority",20,12.0,29.0
+offense_will_recur,None of the above,11,5.0,18.0
+offense_will_recur,Other emotional benefits,31,21.0,41.0
+offense_will_recur,Retribution and emotional or personal satisfaction,1,0.0,3.0
+offense_will_recur_despite_punishment,Deterrence and preventing future issues,102,88.0,117.0
+offense_will_recur_despite_punishment,Empowerment of the punisher,21,13.0,30.0
+offense_will_recur_despite_punishment,Ensures or upholds principles (fairness etc.),50,38.0,62.0
+offense_will_recur_despite_punishment,Financial compensation and restitution,5,1.0,10.0
+offense_will_recur_despite_punishment,"Improving reputation, gaining respect, and asserting authority",18,10.0,26.0
+offense_will_recur_despite_punishment,None of the above,11,5.0,18.0
+offense_will_recur_despite_punishment,Other emotional benefits,33,22.0,44.0
+offense_will_recur_despite_punishment,Retribution and emotional or personal satisfaction,1,0.0,3.0
+others_ambivalent,Deterrence and preventing future issues,100,85.0,116.0
+others_ambivalent,Empowerment of the punisher,11,6.0,18.0
+others_ambivalent,Ensures or upholds principles (fairness etc.),56,44.0,70.0
+others_ambivalent,Financial compensation and restitution,14,7.0,21.0
+others_ambivalent,"Improving reputation, gaining respect, and asserting authority",11,5.0,17.0
+others_ambivalent,None of the above,8,3.0,14.0
+others_ambivalent,Other emotional benefits,38,27.0,48.0
+others_ambivalent,Retribution and emotional or personal satisfaction,11,5.0,18.0
+others_do_not_want_punishment,Deterrence and preventing future issues,94,80.0,110.0
+others_do_not_want_punishment,Empowerment of the punisher,20,12.0,28.0
+others_do_not_want_punishment,Ensures or upholds principles (fairness etc.),60,47.975,73.0
+others_do_not_want_punishment,Financial compensation and restitution,15,8.0,22.024999999999977
+others_do_not_want_punishment,"Improving reputation, gaining respect, and asserting authority",15,8.0,23.0
+others_do_not_want_punishment,None of the above,4,1.0,9.0
+others_do_not_want_punishment,Other emotional benefits,29,19.0,39.0
+others_do_not_want_punishment,Retribution and emotional or personal satisfaction,6,2.0,11.0
+others_want_punishment,Deterrence and preventing future issues,78,64.975,93.0
+others_want_punishment,Empowerment of the punisher,7,3.0,12.024999999999977
+others_want_punishment,Ensures or upholds principles (fairness etc.),42,31.0,54.0
+others_want_punishment,Financial compensation and restitution,16,9.0,24.0
+others_want_punishment,"Improving reputation, gaining respect, and asserting authority",45,34.0,57.0
+others_want_punishment,Other emotional benefits,42,30.975,53.0
+others_want_punishment,Retribution and emotional or personal satisfaction,11,5.0,17.0
+others_will_not_punish,Deterrence and preventing future issues,96,82.0,112.0
+others_will_not_punish,Empowerment of the punisher,11,5.0,17.024999999999977
+others_will_not_punish,Ensures or upholds principles (fairness etc.),55,42.0,69.0
+others_will_not_punish,Financial compensation and restitution,17,9.975000000000001,25.0
+others_will_not_punish,"Improving reputation, gaining respect, and asserting authority",26,17.0,36.0
+others_will_not_punish,None of the above,4,1.0,8.0
+others_will_not_punish,Other emotional benefits,24,15.0,33.0
+others_will_not_punish,Retribution and emotional or personal satisfaction,11,5.0,17.0
+others_will_punish,Deterrence and preventing future issues,95,81.0,109.0
+others_will_punish,Empowerment of the punisher,9,4.0,15.0
+others_will_punish,Ensures or upholds principles (fairness etc.),53,41.0,66.0
+others_will_punish,Financial compensation and restitution,18,10.0,26.0
+others_will_punish,"Improving reputation, gaining respect, and asserting authority",21,13.0,30.0
+others_will_punish,None of the above,3,0.0,7.0
+others_will_punish,Other emotional benefits,28,19.0,38.0
+others_will_punish,Retribution and emotional or personal satisfaction,18,11.0,26.0
+reputation_decrease,Deterrence and preventing future issues,101,86.0,116.0
+reputation_decrease,Empowerment of the punisher,14,7.0,21.024999999999977
+reputation_decrease,Ensures or upholds principles (fairness etc.),51,38.0,65.0
+reputation_decrease,Financial compensation and restitution,4,1.0,8.0
+reputation_decrease,"Improving reputation, gaining respect, and asserting authority",25,16.0,35.0
+reputation_decrease,None of the above,7,2.0,12.0
+reputation_decrease,Other emotional benefits,30,20.0,41.0
+reputation_decrease,Retribution and emotional or personal satisfaction,11,5.0,17.0
+reputation_improve,Deterrence and preventing future issues,81,67.0,95.0
+reputation_improve,Empowerment of the punisher,15,8.0,23.0
+reputation_improve,Ensures or upholds principles (fairness etc.),48,35.0,60.02499999999998
+reputation_improve,Financial compensation and restitution,3,0.0,7.0
+reputation_improve,"Improving reputation, gaining respect, and asserting authority",57,43.975,70.0
+reputation_improve,None of the above,5,1.0,10.0
+reputation_improve,Other emotional benefits,28,18.0,38.0
+reputation_improve,Retribution and emotional or personal satisfaction,7,2.0,13.0
+reputation_same,Deterrence and preventing future issues,109,94.0,125.0
+reputation_same,Empowerment of the punisher,12,6.0,18.0
+reputation_same,Ensures or upholds principles (fairness etc.),49,37.0,62.0
+reputation_same,Financial compensation and restitution,8,3.0,14.0
+reputation_same,"Improving reputation, gaining respect, and asserting authority",14,7.0,21.024999999999977
+reputation_same,None of the above,8,3.0,14.0
+reputation_same,Other emotional benefits,30,21.0,40.0
+reputation_same,Retribution and emotional or personal satisfaction,11,5.0,18.0
+retaliation_expected,Deterrence and preventing future issues,89,74.0,104.0
+retaliation_expected,Empowerment of the punisher,17,10.0,25.0
+retaliation_expected,Ensures or upholds principles (fairness etc.),56,44.0,68.0
+retaliation_expected,Financial compensation and restitution,6,2.0,11.0
+retaliation_expected,"Improving reputation, gaining respect, and asserting authority",20,12.0,29.0
+retaliation_expected,None of the above,5,1.0,10.0
+retaliation_expected,Other emotional benefits,41,30.0,52.0
+retaliation_expected,Retribution and emotional or personal satisfaction,7,3.0,12.0
+retaliation_not_expected,Deterrence and preventing future issues,89,74.0,103.0
+retaliation_not_expected,Empowerment of the punisher,7,2.0,13.0
+retaliation_not_expected,Ensures or upholds principles (fairness etc.),58,46.0,70.02499999999998
+retaliation_not_expected,Financial compensation and restitution,12,6.0,19.0
+retaliation_not_expected,"Improving reputation, gaining respect, and asserting authority",22,14.0,31.0
+retaliation_not_expected,None of the above,10,4.0,16.0
+retaliation_not_expected,Other emotional benefits,40,29.0,52.0
+retaliation_not_expected,Retribution and emotional or personal satisfaction,7,2.0,12.0
+target_has_high_status,Deterrence and preventing future issues,93,79.0,107.0
+target_has_high_status,Empowerment of the punisher,12,6.0,19.0
+target_has_high_status,Ensures or upholds principles (fairness etc.),74,60.0,88.02499999999998
+target_has_high_status,Financial compensation and restitution,10,4.0,17.0
+target_has_high_status,"Improving reputation, gaining respect, and asserting authority",22,14.0,32.0
+target_has_high_status,None of the above,3,0.0,7.0
+target_has_high_status,Other emotional benefits,26,17.0,36.0
+target_has_high_status,Retribution and emotional or personal satisfaction,4,1.0,8.0
+target_has_low_status,Deterrence and preventing future issues,96,81.0,111.0
+target_has_low_status,Empowerment of the punisher,13,7.0,20.0
+target_has_low_status,Ensures or upholds principles (fairness etc.),57,44.0,70.0
+target_has_low_status,Financial compensation and restitution,13,7.0,20.0
+target_has_low_status,"Improving reputation, gaining respect, and asserting authority",26,17.975,36.0
+target_has_low_status,None of the above,4,1.0,8.0
+target_has_low_status,Other emotional benefits,23,14.0,32.0
+target_has_low_status,Retribution and emotional or personal satisfaction,12,6.0,19.0
+target_has_supporters,Deterrence and preventing future issues,94,79.0,108.0
+target_has_supporters,Empowerment of the punisher,11,6.0,18.0
+target_has_supporters,Ensures or upholds principles (fairness etc.),50,39.0,62.0
+target_has_supporters,Financial compensation and restitution,18,10.0,26.0
+target_has_supporters,"Improving reputation, gaining respect, and asserting authority",21,13.0,30.0
+target_has_supporters,None of the above,4,1.0,8.0
+target_has_supporters,Other emotional benefits,29,19.0,39.0
+target_has_supporters,Retribution and emotional or personal satisfaction,10,5.0,16.0
+target_no_supporters,Deterrence and preventing future issues,95,81.0,110.0
+target_no_supporters,Empowerment of the punisher,10,4.0,16.024999999999977
+target_no_supporters,Ensures or upholds principles (fairness etc.),46,33.0,58.0
+target_no_supporters,Financial compensation and restitution,21,13.0,30.0
+target_no_supporters,"Improving reputation, gaining respect, and asserting authority",28,18.0,39.0
+target_no_supporters,None of the above,1,0.0,3.0
+target_no_supporters,Other emotional benefits,21,13.0,30.0
+target_no_supporters,Retribution and emotional or personal satisfaction,15,8.0,23.0
+tit_for_tat,Deterrence and preventing future issues,93,79.0,109.0
+tit_for_tat,Empowerment of the punisher,16,9.0,24.0
+tit_for_tat,Ensures or upholds principles (fairness etc.),65,51.975,78.0
+tit_for_tat,Financial compensation and restitution,7,2.0,12.0
+tit_for_tat,"Improving reputation, gaining respect, and asserting authority",28,18.975,38.0
+tit_for_tat,None of the above,5,1.0,9.0
+tit_for_tat,Other emotional benefits,24,15.0,33.0
+tit_for_tat,Retribution and emotional or personal satisfaction,4,1.0,8.024999999999977
