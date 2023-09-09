@@ -1,0 +1,1 @@
+Label: Retribution and emotional or personal satisfaction, Context Keys: interaction_continuous <= interaction_not_continuous

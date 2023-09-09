@@ -1,0 +1,1 @@
+Label: Retribution and emotional or personal satisfaction, Context Keys: deter_others_impossible >= deter_others_possible

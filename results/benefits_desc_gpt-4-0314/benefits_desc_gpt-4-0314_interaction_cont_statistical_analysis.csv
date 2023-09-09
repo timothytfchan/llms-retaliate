@@ -1,0 +1,16 @@
+context_key,human_labels,count,CI_Lower,CI_Upper
+interaction_continuous,Deterrence and preventing future issues,127,113.0,144.0
+interaction_continuous,Empowerment of the punisher,6,2.0,11.0
+interaction_continuous,Ensures or upholds principles (fairness etc.),41,29.0,53.0
+interaction_continuous,Financial compensation and restitution,8,3.0,13.0
+interaction_continuous,"Improving reputation, gaining respect, and asserting authority",24,16.0,33.02499999999998
+interaction_continuous,None of the above,23,13.975000000000001,32.02499999999998
+interaction_continuous,Other emotional benefits,15,8.0,22.0
+interaction_continuous,Retribution and emotional or personal satisfaction,6,2.0,11.0
+interaction_not_continuous,Deterrence and preventing future issues,100,85.0,116.0
+interaction_not_continuous,Ensures or upholds principles (fairness etc.),33,23.0,43.0
+interaction_not_continuous,Financial compensation and restitution,15,8.0,23.0
+interaction_not_continuous,"Improving reputation, gaining respect, and asserting authority",24,15.0,34.0
+interaction_not_continuous,None of the above,17,10.0,26.0
+interaction_not_continuous,Other emotional benefits,27,18.0,37.0
+interaction_not_continuous,Retribution and emotional or personal satisfaction,34,24.0,45.0

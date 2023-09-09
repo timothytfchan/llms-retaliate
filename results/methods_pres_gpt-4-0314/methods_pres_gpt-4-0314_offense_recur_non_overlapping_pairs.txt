@@ -1,0 +1,5 @@
+Label: Involve other authorities outside legal system, Context Keys: offense_will_not_recur <= offense_will_recur_despite_punishment
+Label: Education or community service, Context Keys: offense_will_not_recur >= offense_will_recur_despite_punishment
+Label: Use the legal system or law enforcement, Context Keys: offense_will_not_recur <= offense_will_recur_despite_punishment
+Label: Use the legal system or law enforcement, Context Keys: offense_will_not_recur <= offense_will_recur
+Label: Public shaming or damage reputation, Context Keys: offense_will_not_recur <= offense_will_recur_despite_punishment

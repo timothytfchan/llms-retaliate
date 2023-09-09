@@ -1,0 +1,18 @@
+context_key,human_labels,count,CI_Lower,CI_Upper
+deter_others_impossible,Deterrence and preventing future issues,101.0,85.0,117.02499999999998
+deter_others_impossible,Empowerment of the punisher,19.0,12.0,28.0
+deter_others_impossible,Ensures or upholds principles (fairness etc.),25.0,15.0,35.0
+deter_others_impossible,Financial compensation and restitution,6.0,2.0,11.0
+deter_others_impossible,"Improving reputation, gaining respect, and asserting authority",19.0,12.0,27.0
+deter_others_impossible,None of the above,17.0,9.975000000000001,24.0
+deter_others_impossible,Other emotional benefits,26.0,17.0,36.0
+deter_others_impossible,Retribution and emotional or personal satisfaction,36.0,25.0,47.0
+deter_others_possible,Deterrence and preventing future issues,123.0,108.0,137.0
+deter_others_possible,Empowerment of the punisher,12.0,6.0,20.0
+deter_others_possible,Ensures or upholds principles (fairness etc.),37.0,27.0,48.0
+deter_others_possible,Financial compensation and restitution,8.0,3.0,14.0
+deter_others_possible,"Improving reputation, gaining respect, and asserting authority",28.0,18.0,38.0
+deter_others_possible,None of the above,8.0,3.0,14.0
+deter_others_possible,Other emotional benefits,21.0,13.0,30.024999999999977
+deter_others_possible,Retribution and emotional or personal satisfaction,13.0,6.0,21.0
+deter_others_impossible,,0.0,0.0,0.0

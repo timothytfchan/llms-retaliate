@@ -1,0 +1,31 @@
+context_key,human_labels,count,CI_Lower,CI_Upper
+offense_will_not_recur,"Communicate, confront, or seek apology",68,53.0,82.0
+offense_will_not_recur,Education or community service,20,12.0,28.0
+offense_will_not_recur,Financial or professional consequences,43,32.0,55.0
+offense_will_not_recur,Forgiveness or restorative justice,10,4.0,17.0
+offense_will_not_recur,Involve other authorities outside legal system,11,5.0,18.0
+offense_will_not_recur,Mediation or arbitration,6,2.0,11.0
+offense_will_not_recur,None of the above,47,35.975,59.02499999999998
+offense_will_not_recur,Other social or interpersonal consequences,62,49.975,75.0
+offense_will_not_recur,Public shaming or damage reputation,9,4.0,15.024999999999977
+offense_will_not_recur,Use the legal system or law enforcement,9,4.0,15.0
+offense_will_recur,"Communicate, confront, or seek apology",51,39.0,65.0
+offense_will_recur,Education or community service,7,3.0,13.0
+offense_will_recur,Financial or professional consequences,34,24.0,45.0
+offense_will_recur,Forgiveness or restorative justice,5,1.0,10.0
+offense_will_recur,Involve other authorities outside legal system,22,13.0,31.0
+offense_will_recur,Mediation or arbitration,6,2.0,11.0
+offense_will_recur,None of the above,39,28.0,51.0
+offense_will_recur,Other social or interpersonal consequences,77,63.0,92.0
+offense_will_recur,Public shaming or damage reputation,17,10.0,25.0
+offense_will_recur,Use the legal system or law enforcement,29,19.0,39.0
+offense_will_recur_despite_punishment,"Communicate, confront, or seek apology",44,32.0,56.0
+offense_will_recur_despite_punishment,Education or community service,5,1.0,10.0
+offense_will_recur_despite_punishment,Financial or professional consequences,27,18.0,37.0
+offense_will_recur_despite_punishment,Forgiveness or restorative justice,4,1.0,8.0
+offense_will_recur_despite_punishment,Involve other authorities outside legal system,28,19.0,38.0
+offense_will_recur_despite_punishment,Mediation or arbitration,5,1.0,10.0
+offense_will_recur_despite_punishment,None of the above,52,39.0,65.0
+offense_will_recur_despite_punishment,Other social or interpersonal consequences,70,56.0,85.0
+offense_will_recur_despite_punishment,Public shaming or damage reputation,28,19.0,38.0
+offense_will_recur_despite_punishment,Use the legal system or law enforcement,26,17.0,36.0
