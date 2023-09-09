@@ -5,14 +5,14 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Reworked plotting function for better text alignment and visibility
-def plot_heatmap(df, OUTPUT_DIR, output_filename, title, count_column, ci_lower_column, ci_upper_column):
+def plot_heatmap(df, OUTPUT_DIR, output_filename, title, labels_column_name, count_column, ci_lower_column, ci_upper_column):
     # Pivot the DataFrame to switch the axes
     df['count'].fillna(0, inplace=True)
     df['CI_Lower'].fillna(0, inplace=True)
     df['CI_Upper'].fillna(0, inplace=True)
-    df_pivot = df.pivot("context_key", "labels", count_column).fillna(0)
-    ci_lower_pivot = df.pivot("context_key", "labels", ci_lower_column).fillna(0)
-    ci_upper_pivot = df.pivot("context_key", "labels", ci_upper_column).fillna(0)
+    df_pivot = df.pivot("context_key", labels_column_name, count_column).fillna(0)
+    ci_lower_pivot = df.pivot("context_key", labels_column_name, ci_lower_column).fillna(0)
+    ci_upper_pivot = df.pivot("context_key", labels_column_name, ci_upper_column).fillna(0)
 
     fig, ax = plt.subplots(figsize=(18, 12))
     cax = sns.heatmap(df_pivot, annot=False, fmt=".2f", linewidths=.5, cmap="YlGnBu", ax=ax, cbar_kws={'label': 'Count'})
@@ -41,28 +41,28 @@ def plot_heatmap(df, OUTPUT_DIR, output_filename, title, count_column, ci_lower_
     plt.yticks(rotation=0)
     plt.tight_layout()
     plt.savefig(os.path.join(OUTPUT_DIR, f"{output_filename}.png"))
-    #plt.show()
 
-def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, title=None):
+def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, output_filename = None, title=None, labels_column_name = 'labels'):
     df = pd.read_csv(LABELS_PATH)
-    output_filename = os.path.basename(LABELS_PATH).replace('.csv', '')
+    if not output_filename:
+        output_filename = os.path.basename(LABELS_PATH).replace('.csv', '')
     if not title:
         title = f'{output_filename}_heatmap_count.png'
     
-    false_counts = df[df['labels'] == 'False'].groupby('context_key').size().reset_index(name='count')
-    filtered_df = df[df['labels'] != 'False']
-    combination_counts = filtered_df.groupby(['context_key', 'labels']).size().reset_index(name='count')
+    false_counts = df[df[labels_column_name] == 'False'].groupby('context_key').size().reset_index(name='count')
+    filtered_df = df[df[labels_column_name] != 'False']
+    combination_counts = filtered_df.groupby(['context_key', labels_column_name]).size().reset_index(name='count')
     
-    all_bootstrap_counts = pd.DataFrame(columns=['context_key', 'labels', 'CI_Lower', 'CI_Upper'])
+    all_bootstrap_counts = pd.DataFrame(columns=['context_key', labels_column_name, 'CI_Lower', 'CI_Upper'])
 
     for context_key in filtered_df['context_key'].unique():
         specific_group_df = filtered_df[filtered_df['context_key'] == context_key]
         
-        bootstrap_samples = {label: [] for label in specific_group_df['labels'].unique()}
+        bootstrap_samples = {label: [] for label in specific_group_df[labels_column_name].unique()}
         
         for i in range(1000):
             bootstrap_sample = specific_group_df.sample(n=len(specific_group_df), replace=True, random_state=i)
-            bootstrap_counts = bootstrap_sample['labels'].value_counts()
+            bootstrap_counts = bootstrap_sample[labels_column_name].value_counts()
             
             for label in bootstrap_samples.keys():
                 bootstrap_samples[label].append(bootstrap_counts.get(label, 0))
@@ -73,7 +73,7 @@ def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, title=None):
             
             all_bootstrap_counts = all_bootstrap_counts.append({
                 'context_key': context_key,
-                'labels': label,
+                labels_column_name: label,
                 'CI_Lower': CI_Lower,
                 'CI_Upper': CI_Upper
             }, ignore_index=True)
@@ -93,15 +93,11 @@ def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, title=None):
         "Target's status": ['target_has_high_status', 'target_has_low_status'],
         "Target's support": ['target_has_supporters', 'target_no_supporters']
     }
-    """
-    # Add "no_context" to each of the lists
-    for key in groupings.keys():
-        groupings[key].append("no_context")
-    """
+
     non_overlapping_pairs = []
     # Check for non-overlapping intervals across different context_keys for the same label
-    for label in filtered_df['labels'].unique():
-        label_bootstrap_counts = all_bootstrap_counts[all_bootstrap_counts['labels'] == label]
+    for label in filtered_df[labels_column_name].unique():
+        label_bootstrap_counts = all_bootstrap_counts[all_bootstrap_counts[labels_column_name] == label]
         for i, row1 in label_bootstrap_counts.iterrows():
             for j, row2 in label_bootstrap_counts.iterrows():
                 if i >= j:  # Skip duplicate and self comparisons
@@ -124,23 +120,8 @@ def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, title=None):
                             non_overlapping_pairs.append((label, context_key1, context_key2, direction))
                             break
     
-    combination_counts = pd.merge(combination_counts, all_bootstrap_counts, on=['context_key', 'labels'], how='outer')
+    combination_counts = pd.merge(combination_counts, all_bootstrap_counts, on=['context_key', labels_column_name], how='outer')
     combination_counts[['count', 'CI_Lower', 'CI_Upper']] = combination_counts[['count', 'CI_Lower', 'CI_Upper']].fillna(0)
-    """
-    context_total = combination_counts.groupby('context_key')['count'].transform('sum')
-    combination_counts['context_normalized'] = (combination_counts['count'] / context_total) * 100
-    
-    label_total = combination_counts.groupby('labels')['count'].transform('sum')
-    combination_counts['label_normalized'] = (combination_counts['count'] / label_total) * 100
-    
-    # Normalize confidence intervals by context_key
-    df['CI_Lower_context_normalized'] = (df['CI_Lower'] / df['context_total']) * 100
-    df['CI_Upper_context_normalized'] = (df['CI_Upper'] / df['context_total']) * 100
-    
-    # Normalize confidence intervals by labels
-    df['CI_Lower_label_normalized'] = (df['CI_Lower'] / df['label_total']) * 100
-    df['CI_Upper_label_normalized'] = (df['CI_Upper'] / df['label_total']) * 100
-    """
 
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
@@ -155,6 +136,4 @@ def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, title=None):
             f.write(f"Label: {label}, Context Keys: {context_key1} {direction} {context_key2}\n")
     
     # Adding the heatmap plots
-    plot_heatmap(combination_counts, OUTPUT_DIR, output_filename, title, 'count', 'CI_Lower', 'CI_Upper')
-    #plot_heatmap(combination_counts, OUTPUT_DIR, 'heatmap_context_normalized.png', 'Context-Normalized Counts with 95% CI', 'context_normalized', 'CI_Lower_context_normalized', 'CI_Upper_context_normalized')
-    #plot_heatmap(combination_counts, OUTPUT_DIR, 'heatmap_label_normalized.png', 'Label-Normalized Counts with 95% CI', 'label_normalized', 'CI_Lower_label_normalized', 'CI_Upper_label_normalized')
+    plot_heatmap(combination_counts, OUTPUT_DIR, output_filename, title, labels_column_name, 'count', 'CI_Lower', 'CI_Upper')

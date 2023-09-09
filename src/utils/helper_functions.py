@@ -3,10 +3,12 @@ import os
 import time
 import openai
 from dotenv import load_dotenv
+import numpy as np
 import pandas as pd
 from typing import Dict, List, Mapping, Optional
 import re
 import matplotlib.pyplot as plt
+from sklearn.utils import resample
 
 # Set OpenAI API key
 ENV_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
@@ -110,3 +112,48 @@ def process_csv_and_plot(target_word, input_filepath, output_csv_filepath, outpu
     plt.tight_layout()
     plt.savefig(output_image_filepath)
     plt.close()
+
+def bootstrap_and_plot(input_dict, plot_title, x_label, y_label, output_path):    
+    # Step 1: Create a list with each key repeated according to its value
+    data_list = [k for k, v in input_dict.items() for _ in range(v)]
+    
+    # Step 2: Bootstrap sampling and calculating the means
+    n_bootstrap = 1000
+    sample_size = sum(input_dict.values())
+    bootstrap_means = {k: [] for k in input_dict.keys()}
+    
+    for i in range(n_bootstrap):
+        bootstrap_sample = resample(data_list, replace=True, n_samples=sample_size, random_state = i)
+        bootstrap_counts = {k: bootstrap_sample.count(k) for k in input_dict.keys()}
+        for k, v in bootstrap_counts.items():
+            bootstrap_means[k].append(v)
+    
+    # Step 3: Calculate the estimated mean and its 95% confidence interval
+    confidence_intervals = {k: (np.percentile(v, 2.5), np.percentile(v, 97.5)) for k, v in bootstrap_means.items()}
+    
+    # Step 4: Get the original counts and keys, and sort them by counts in descending order
+    original_counts = list(input_dict.values())
+    keys = list(input_dict.keys())
+    sorted_indices = np.argsort(original_counts)
+    sorted_keys = np.array(keys)[sorted_indices]
+    sorted_counts = np.array(original_counts)[sorted_indices]
+    
+    # Step 5: Get the sorted lower and upper bounds of the confidence intervals
+    lower_bounds = [confidence_intervals[key][0] for key in sorted_keys]
+    upper_bounds = [confidence_intervals[key][1] for key in sorted_keys]
+
+    # Step 6: Plotting the sorted bar chart with horizontal bars
+    plt.figure(figsize=(10, 12))
+    error_bars = [[sorted_counts[i] - lower_bounds[i], upper_bounds[i] - sorted_counts[i]] for i in range(len(sorted_keys))]
+    plt.barh(sorted_keys, sorted_counts, xerr=np.array(error_bars).T, color='skyblue', capsize=3)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(plot_title)
+    plt.grid(axis='x')
+    
+    # Adjusting the layout to prevent clipping of labels
+    plt.tight_layout()
+
+    # Save the plot to the specified output path
+    plt.savefig(output_path)
+    #plt.show()
