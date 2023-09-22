@@ -1,4 +1,4 @@
-#based on https://github.com/aypan17/machiavelli/blob/723d76c9db388e3590703cbd7d5443f452969464/machiavelli/openai_helpers.py
+#chat_completion_with_retries and get_embedding_with_retries based on https://github.com/aypan17/machiavelli/blob/723d76c9db388e3590703cbd7d5443f452969464/machiavelli/openai_helpers.py
 import os
 import time
 import openai
