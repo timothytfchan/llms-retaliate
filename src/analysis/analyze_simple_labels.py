@@ -71,12 +71,25 @@ def perform_analysis_completions(LABELS_PATH, OUTPUT_DIR, output_filename = None
             CI_Lower = np.percentile(samples, 2.5)
             CI_Upper = np.percentile(samples, 97.5)
             
+            """
+            # LEGACY
             all_bootstrap_counts = all_bootstrap_counts.append({
                 'context_key': context_key,
                 labels_column_name: label,
                 'CI_Lower': CI_Lower,
                 'CI_Upper': CI_Upper
             }, ignore_index=True)
+            """
+
+            new_data = pd.DataFrame({
+                'context_key': [context_key],
+                labels_column_name: [label],
+                'CI_Lower': [CI_Lower],
+                'CI_Upper': [CI_Upper]
+            })
+
+            all_bootstrap_counts = pd.concat([all_bootstrap_counts, new_data], ignore_index=True)
+
     
     groupings = {
         "Cost": ['cost_10', 'cost_10000'],
