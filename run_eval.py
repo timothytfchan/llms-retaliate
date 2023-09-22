@@ -28,6 +28,21 @@ EMBEDDINGS_MODEL = 'text-embedding-ada-002'
 # Generate prompts
 PROMPTS_PATH = generate_prompts(SCENARIOS_PATH = SCENARIOS_PATH, CONTEXT_PATH = CONTEXT_PATH, QUESTIONS_PATH = QUESTIONS_PATH)
 
+def wrapper_function(EMBEDDINGS_PATH):
+    return simple_label_completions(EMBEDDINGS_PATH,
+                                    MODEL = 'gpt-3.5-turbo',
+                                    TEMPERATURE = 0.1,
+                                    LABELING_PROMPT_FILTER = "simple_benefits",
+                                    LABELS_PATH = None,
+                                    acceptable_answers = ["Retribution and emotional or personal satisfaction",
+                                                          "Other emotional benefits",
+                                                          "Empowerment of the punisher",
+                                                          "Deterrence and preventing future issues",
+                                                          "Financial compensation and restitution",
+                                                          "Improving reputation, gaining respect, and asserting authority",
+                                                          "Ensures or upholds principles (fairness etc.)",
+                                                          "None of the above"])
+
 embeddings_list = []
 embeddings_list_2 = []
 
@@ -116,21 +131,14 @@ for MODEL in MODELS_LIST:
 
     print(f"Finished {MODEL}")
 
-def wrapper_function(EMBEDDINGS_PATH):
-    return simple_label_completions(EMBEDDINGS_PATH,
-                                    MODEL = 'gpt-3.5-turbo',
-                                    TEMPERATURE = 0.1,
-                                    LABELING_PROMPT_FILTER = "simple_benefits",
-                                    LABELS_PATH = None,
-                                    acceptable_answers = ["Retribution and emotional or personal satisfaction",
-                                                          "Other emotional benefits",
-                                                          "Empowerment of the punisher",
-                                                          "Deterrence and preventing future issues",
-                                                          "Financial compensation and restitution",
-                                                          "Improving reputation, gaining respect, and asserting authority",
-                                                          "Ensures or upholds principles (fairness etc.)",
-                                                          "None of the above"])
+    # Get simple labels
+    for EMBEDDINGS_PATH in embeddings_list:
+        simple_label_completions(EMBEDDINGS_PATH)
 
+    for EMBEDDINGS_PATH in embeddings_list_2:
+        wrapper_function(EMBEDDINGS_PATH)
+
+"""
 # Get simple labels
 if __name__ == '__main__':
     with Pool(processes=4) as pool:
@@ -138,7 +146,9 @@ if __name__ == '__main__':
         #print(f"Finished {LABEL_PATH}")
         LABEL_PATH_2 = pool.map(wrapper_function, embeddings_list_2)
         print(f"Finished {LABEL_PATH_2}")
+"""
 
+# The label_completions functions below are quite expensive to run and were not used for the study
 """
 # JSON label completions
 # Descriptive
@@ -182,4 +192,4 @@ LABELS_PATH_METHODS_PRES = label_completions(COMPLETIONS_PATH = COMPLETIONS_PATH
 print("Finished LABELS_PATH_METHODS_PRES")
 """
 
-print("Finished!")
+print("Finished run_eval.py!")
